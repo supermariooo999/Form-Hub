@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng kê nộp thuế - Mẫu 01/BKNT</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+<button class="print-button no-print" onclick="window.print()">
+    In / Lưu PDF
+</button>
+
+<div class="a4-container">
+    <div class="side-toolbar no-print">
+
+        <button
+            type="button"
+            class="side-btn btn-nnt"
+            id="btnOpenNNT"
+        >
+            👤
+            <span>Chọn NNT</span>
+        </button>
+
+        <button
+            type="button"
+            class="side-btn btn-tieumuc"
+            id="btnOpenTieuMuc"
+        >
+            📋
+            <span>Chọn tiểu mục</span>
+        </button>
+
+    </div>
+
+    <div class="page">
+
+        <!-- =====================================================
+            TIÊU ĐỀ
+            ===================================================== -->
+
+        <table class="header-table">
+            <tbody>
+
+                <tr>
+                    <td width="60%"></td>
+
+                    <td width="40%" class="text-center">
+
+                        <strong>
+                            Mẫu số: 01/BKNT
+                        </strong>
+
+                        <br>
+
+                        <span class="small-text">
+                            (Ban hành kèm theo Thông tư số
+                            84/2016/TT-BTC của Bộ Tài chính)
+                        </span>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+        <table class="header-table">
+
+            <tbody>
+
+                <tr>
+
+                    <td width="65%" class="text-center fs-14">
+
+                        <strong>
+                            BẢNG KÊ NỘP THUẾ
+                        </strong>
+
+                    </td>
+
+                    <td width="35%">
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        Mã hiệu: .........................
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="text-center">
+
+                        Tiền mặt
+                        <span class="checkbox"></span>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        Chuyển Khoản
+                        <span class="checkbox"></span>
+
+                    </td>
+
+                    <td>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        Số: ..................................
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td class="text-center">
+
+                        Loại tiền
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        VND
+                        <span class="checkbox checked"></span>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        USD
+                        <span class="checkbox"></span>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        Khác ........
+
+                    </td>
+
+                    <td></td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <br>
+
+
+        <!-- =====================================================
+            THÔNG TIN NGƯỜI NỘP THUẾ
+            ===================================================== -->
+
+        <div class="nnt-line">
+            <span>
+                Người nộp thuế:
+            
+                <strong id="hoTen" contenteditable="true">
+                    ...................................................................................................................................
+                </strong>
+            </span>
+
+        </div>
+
+
+        <p class="mst-line">
+            Mã số thuế:
+            <strong contenteditable="true">
+                <span id="soCCCD">..........................................................................................................................................</span>
+                <span id="maSoThue"></span>
+            </strong>
+        </p>
+
+
+        <p>
+
+            Địa chỉ:
+            <span id="diaChiAp" contenteditable="true">..............................................</span>
+
+            &nbsp;&nbsp;
+
+            Phường/Xã:
+            <span id="diaChiPhuongXa" contenteditable="true">...........................</span>
+
+            &nbsp;&nbsp;
+
+            Tỉnh, TP:
+            <span id="diaChiTinhTP" contenteditable="true">...........................</span>
+
+        </p>
+
+
+        <p>
+            Người nộp thay:
+            ...................................................................................................................................
+        </p>
+
+
+        <p>
+
+            Địa chỉ:
+            ..............................................
+
+            &nbsp;&nbsp;
+
+            Phường/Xã:
+            ...........................
+
+            &nbsp;&nbsp;
+
+            Tỉnh, TP:
+            ...........................
+
+        </p>
+
+
+        <!-- =====================================================
+            THÔNG TIN NỘP NGÂN SÁCH NHÀ NƯỚC
+            ===================================================== -->
+
+        <p>
+
+            Đề nghị NH/KBNN:
+            .....................................
+
+            trích TK số:
+            .........................
+
+            hoặc thu tiền mặt để nộp NSNN theo:
+
+            TK thu NSNN
+            <span class="checkbox checked"></span>
+
+            &nbsp;&nbsp;&nbsp;
+
+            TK tạm thu
+            <span class="checkbox"></span>
+
+            &nbsp;&nbsp;&nbsp;
+
+            TK thu hồi hoàn thuế GTGT
+            <span class="checkbox"></span>
+
+        </p>
+
+
+        <p contenteditable="true">
+
+            vào tài Khoản của KBNN:
+
+            <span>
+                PGD số 17 - KBNN khu vực XX /
+                KBNN khu vực XX - PGD số 17
+            </span>,
+
+            <span>
+                xã Hòa Bình, tỉnh Cà Mau
+            </span>
+
+        </p>
+
+
+        <p>
+
+            Nộp theo văn bản của cơ quan có thẩm quyền:
+
+            Kiểm toán nhà nước
+            <span class="checkbox"></span>
+
+            <br>
+
+            Thanh tra tài chính
+            <span class="checkbox"></span>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Thanh tra Chính phủ
+            <span class="checkbox"></span>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Cơ quan có thẩm quyền khác
+            <span class="checkbox"></span>
+
+        </p>
+
+
+        <p>
+
+            Cơ quan quản lý thu:
+
+            <strong>
+                <select id="maCoQuanThu">
+                    <option value="">-- Chọn cơ quan thu --</option>
+                    <option value="1140338">1140338 - Xã Hòa Bình - Thuế cơ sở 6 tỉnh Cà Mau</option>
+                    <option value="1140094">1140094 - Xã Vĩnh Mỹ - Thuế cơ sở 6 tỉnh Cà Mau</option>
+                    <option value="1140337">1140337 - Xã Vĩnh Hậu - Thuế cơ sở 6 tỉnh Cà Mau</option>
+                    <option value="1140339">1140339 - Xã Vĩnh Lợi - Thuế cơ sở 6 tỉnh Cà Mau</option>
+                    <option value="1140340">1140340 - Xã Hưng Hội - Thuế cơ sở 6 tỉnh Cà Mau</option>
+                    <option value="1140341">1140341 - Xã Châu Thới - Thuế cơ sở 6 tỉnh Cà Mau</option>
+                </select>
+            </strong>
+
+        </p>
+
+
+        <!-- =====================================================
+            BẢNG KÊ KHOẢN NỘP
+            ===================================================== -->
+
+        <table class="tax-table">
+
+            <colgroup>
+
+                <col class="col-stt">
+
+                <col class="col-to-khai">
+
+                <col class="col-ky-thue">
+
+                <col class="col-noi-dung">
+
+                <col class="col-so-tien">
+
+            </colgroup>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        STT
+                    </th>
+
+                    <th>
+                        Số tờ khai
+                    </th>
+
+                    <th>
+                        Kỳ thuế
+                    </th>
+
+                    <th>
+                        Nội dung
+                        <br>
+                        Khoản nộp NSNN
+                    </th>
+
+                    <th>
+                        Số tiền
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="taxTableBody" contenteditable="true">
+
+                <!-- Javascript thêm dữ liệu ở đây -->
+
+            </tbody>
+
+        </table>
+
+
+        <!-- =====================================================
+            TỔNG TIỀN BẰNG CHỮ
+            ===================================================== -->
+
+        <p class="amount-in-words">
+
+            Tổng số tiền ghi bằng chữ:
+
+            <span id="amountInWords" contenteditable="true">
+        </p>
+
+
+        <!-- =====================================================
+            PHẦN KÝ TÊN
+            ===================================================== -->
+
+        <table class="signature-table">
+
+            <tbody>
+
+                <tr>
+
+                    <th
+                        width="50%"
+                        colspan="3"
+                        class="signature-title">
+
+                        NGƯỜI NỘP TIỀN
+
+                    </th>
+
+                    <th class="signature-title">
+
+                        NGÂN HÀNG/ KHO BẠC NHÀ NƯỚC
+
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td
+                        colspan="3"
+                        class="text-center">
+
+                        Ngày .....
+
+                        tháng .....
+
+                        năm <span id="namIn"></span>
+
+                    </td>
+
+                    <td class="text-center">
+
+                        Ngày .....
+
+                        tháng .....
+
+                        năm <span id="namIn2"></span>
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <th width="16%" class="text-center">
+                        Người nộp tiền
+                    </th>
+
+                    <th width="16%" class="text-center">
+                        Kế toán trưởng
+                    </th>
+
+                    <th width="18%" class="text-center">
+                        Thủ trưởng đơn vị
+                    </th>
+
+                    <th class="text-center">
+                        Người thực hiện giao dịch
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="signature-space">
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <!-- =====================================================
+        MODAL CHỌN NNT
+        ===================================================== -->
+
+        <div
+            class="nnt-modal no-print"
+            id="nntModal"
+        >
+
+            <div class="nnt-modal-box">
+
+                <!-- HEADER -->
+
+                <div class="nnt-modal-header">
+
+                    <h3 class="nnt-modal-title">
+                        Chọn người nộp thuế
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="nnt-modal-close"
+                        id="btnCloseNNT"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="nnt-modal-search">
+
+                    <div class="nnt-search-input-wrapper">
+
+                        <span class="nnt-search-icon">
+                            🔍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="nntSearchInput"
+                            placeholder="Tìm theo tên NNT, CCCD hoặc mã số thuế..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESULT -->
+
+                <div
+                    class="nnt-modal-body"
+                    id="nntResult"
+                >
+
+                    <div class="nnt-empty">
+                        Nhập tên, CCCD hoặc mã số thuế để tìm NNT
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="nnt-modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-modal btn-cancel"
+                        id="btnCancelNNT"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-modal btn-confirm"
+                        id="btnConfirmNNT"
+                        disabled
+                    >
+                        ✓ Chọn NNT
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =====================================================
+            MODAL CHỌN TIỂU MỤC
+            ===================================================== -->
+        <div class="tieumuc-modal no-print" id="tieumucModal">
+
+            <div class="tieumuc-modal-box">
+
+                <div class="tieumuc-modal-header">
+                    <h3 class="tieumuc-modal-title">
+                        Chọn tiểu mục
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="tieumuc-modal-close"
+                        id="btnCloseTieuMuc"
+                    >
+                        ×
+                    </button>
+                </div>
+
+                <div class="tieumuc-modal-search">
+
+                    <div class="tieumuc-search-wrapper">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="tieumucSearchInput"
+                            placeholder="Tìm theo tên hoặc mã tiểu mục..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="tieumuc-modal-body"
+                    id="tieumucResult"
+                ></div>
+
+                <div class="tieumuc-modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-modal btn-cancel"
+                        id="btnCancelTieuMuc"
+                    >
+                        Hủy
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-modal btn-confirm"
+                        id="btnConfirmTieuMuc"
+                    >
+                        ✓ Chọn tiểu mục
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../../xdata/nnt.js"></script>
+<script src="tieumuc.js"></script>
+<script>
+
+    /* =========================================================
+       DỮ LIỆU KHOẢN NỘP
+       ========================================================= */
+
+    const data = [
+
+        {
+            so_tien: "",
+            ten_tieu_muc: "",
+            ma_tieu_muc: ""
+        },
+
+        {
+            so_tien: "",
+            ten_tieu_muc: "",
+            ma_tieu_muc: ""
+        },
+
+        {
+            so_tien: "",
+            ten_tieu_muc: "",
+            ma_tieu_muc: ""
+        },
+
+        {
+            so_tien: "",
+            ten_tieu_muc: "",
+            ma_tieu_muc: ""
+        },
+
+        {
+            so_tien: "",
+            ten_tieu_muc: "",
+            ma_tieu_muc: ""
+        }
+
+    ];
+
+
+    /* =========================================================
+       DOM
+       ========================================================= */
+
+    const nntModal =
+        document.getElementById("nntModal");
+
+    const btnOpenNNT =
+        document.getElementById("btnOpenNNT");
+
+    const btnCloseNNT =
+        document.getElementById("btnCloseNNT");
+
+    const btnCancelNNT =
+        document.getElementById("btnCancelNNT");
+
+    const btnConfirmNNT =
+        document.getElementById("btnConfirmNNT");
+
+    const nntSearchInput =
+        document.getElementById("nntSearchInput");
+
+    const nntResult =
+        document.getElementById("nntResult");
+
+
+
+    /* =========================================================
+       NNT ĐANG CHỌN
+       ========================================================= */
+
+    let selectedNNT = null;
+
+    /*
+     * Index của NNT đang chọn trong mảng gốc
+     */
+    let selectedNNTIndex = -1;
+
+
+    /* =========================================================
+       CONFIG
+       ========================================================= */
+
+    const MAX_RESULTS = 20;
+
+    const SEARCH_DELAY = 150;
+
+
+    /* =========================================================
+       NORMALIZE TEXT
+       Chạy 1 lần khi tạo index, không chạy mỗi lần search
+       ========================================================= */
+
+    function normalizeText(value) {
+
+        return String(value ?? "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .trim();
+
+    }
+
+
+    /* =========================================================
+       ESCAPE HTML
+       ========================================================= */
+
+    function escapeHtml(value) {
+
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =========================================================
+       TẠO SEARCH INDEX
+       
+       Đây là phần quan trọng nhất để giảm lag.
+
+       Ví dụ NNT:
+
+       {
+           cccd: "095071006080",
+           mst: "1900258934",
+           tenNNT: "CÔNG TY TNHH..."
+       }
+
+       sẽ được chuẩn bị thành:
+
+       {
+           index: 0,
+           item: {...},
+           ten: "cong ty tnhh...",
+           mst: "1900258934",
+           cccd: "095071006080"
+       }
+
+       Sau này search không cần normalize nữa.
+       ========================================================= */
+
+    const nntIndex = Array.isArray(nnt)
+
+        ? nnt.map((item, index) => {
+
+            return {
+
+                index,
+
+                item,
+
+                ten:
+                    normalizeText(
+                        item.tenNNT
+                    ),
+
+                mst:
+                    normalizeText(
+                        item.mst
+                    ),
+
+                cccd:
+                    normalizeText(
+                        item.cccd
+                    )
+
+            };
+
+        })
+
+        : [];
+
+
+    console.log(
+        "Số lượng NNT:",
+        nntIndex.length
+    );
+
+
+    /* =========================================================
+       RENDER 1 NNT
+       ========================================================= */
+
+    function createNNTHTML(record) {
+
+        const item =
+            record.item;
+
+
+        return `
+
+            <div
+                class="nnt-result-item"
+                data-index="${record.index}"
+            >
+
+                <div class="nnt-result-name">
+
+                    ${escapeHtml(
+                        item.tenNNT
+                    )}
+
+                </div>
+
+
+                <div class="nnt-result-info">
+
+                    <span class="nnt-tag">
+
+                        MST:
+                        ${escapeHtml(
+                            item.mst
+                        )}
+
+                    </span>
+
+
+                    <span class="nnt-tag">
+
+                        CCCD:
+                        ${escapeHtml(
+                            item.cccd
+                        )}
+
+                    </span>
+
+
+                    <span class="nnt-tag">
+
+                        Mã chương:
+                        ${escapeHtml(
+                            item.maChuong
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <div class="nnt-result-address">
+
+                    📍
+
+                    ${escapeHtml(
+                        item.tenAp
+                    )}
+
+                    ·
+
+                    ${escapeHtml(
+                        item.tenXa
+                    )}
+
+                    ·
+
+                    ${escapeHtml(
+                        item.tenTinh
+                    )}
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================================
+       RENDER DANH SÁCH
+       
+       Chỉ render tối đa 20 dòng.
+       ========================================================= */
+
+    function renderNNTResults(list) {
+
+        if (!list || list.length === 0) {
+
+            nntResult.innerHTML = `
+
+                <div class="nnt-empty">
+
+                    Không tìm thấy người nộp thuế phù hợp
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        let html = `
+
+            <div class="nnt-result-count">
+
+                Hiển thị
+                <strong>${list.length}</strong>
+                người nộp thuế
+
+            </div>
+
+        `;
+
+
+        /*
+         * Chỉ tạo tối đa 20 DOM
+         */
+
+        for (
+            let i = 0;
+            i < list.length && i < MAX_RESULTS;
+            i++
+        ) {
+
+            html += createNNTHTML(
+                list[i]
+            );
+
+        }
+
+
+        nntResult.innerHTML = html;
+
+    }
+
+
+    /* =========================================================
+       HIỆN 20 NNT ĐẦU KHI MỞ MODAL
+       ========================================================= */
+
+    function showDefaultNNT() {
+
+        const first20 =
+            nntIndex.slice(
+                0,
+                MAX_RESULTS
+            );
+
+
+        renderNNTResults(
+            first20
+        );
+
+    }
+
+
+    /* =========================================================
+       SEARCH NNT
+       
+       Không dùng map/filter nữa.
+       Dùng for loop và dừng ngay khi đủ 20 kết quả.
+       ========================================================= */
+
+    function searchNNT(keyword) {
+
+        const query =
+            normalizeText(keyword);
+
+
+        /*
+         * Không nhập gì
+         * → hiện 20 NNT đầu
+         */
+
+        if (!query) {
+
+            showDefaultNNT();
+
+            return;
+
+        }
+
+
+        const results = [];
+
+
+        /*
+         * Duyệt index đã chuẩn bị sẵn
+         */
+
+        for (
+            let i = 0;
+            i < nntIndex.length;
+            i++
+        ) {
+
+            const record =
+                nntIndex[i];
+
+
+            /*
+             * Search theo:
+             *
+             * Tên
+             * MST
+             * CCCD
+             */
+
+            if (
+
+                record.ten.includes(query) ||
+
+                record.mst.includes(query) ||
+
+                record.cccd.includes(query)
+
+            ) {
+
+                results.push(
+                    record
+                );
+
+
+                /*
+                 * Đủ 20 kết quả thì dừng
+                 *
+                 * Không cần duyệt tiếp
+                 */
+
+                if (
+                    results.length >=
+                    MAX_RESULTS
+                ) {
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+
+        renderNNTResults(
+            results
+        );
+
+    }
+
+
+    /* =========================================================
+       DEBOUNCE SEARCH
+       
+       Người dùng gõ:
+
+       M
+       MI
+       MIN
+       MINH
+
+       Không search 4 lần liên tục.
+
+       Chờ 150ms sau khi người dùng ngừng gõ.
+       ========================================================= */
+
+    let searchTimer = null;
+
+
+    nntSearchInput.addEventListener(
+        "input",
+        function () {
+
+            const keyword =
+                this.value;
+
+
+            clearTimeout(
+                searchTimer
+            );
+
+
+            searchTimer =
+                setTimeout(
+                    function () {
+
+                        searchNNT(
+                            keyword
+                        );
+
+                    },
+                    SEARCH_DELAY
+                );
+
+        }
+    );
+
+
+    /* =========================================================
+       CLICK CHỌN NNT
+       
+       Dùng EVENT DELEGATION.
+
+       Không cần:
+
+       querySelectorAll()
+       forEach()
+       addEventListener() từng dòng
+
+       → nhẹ hơn.
+       ========================================================= */
+
+    nntResult.addEventListener(
+        "click",
+        function (event) {
+
+            const row =
+                event.target.closest(
+                    ".nnt-result-item"
+                );
+
+
+            /*
+             * Click ngoài dòng
+             */
+
+            if (!row) {
+                return;
+            }
+
+
+            /*
+             * Index trong mảng nnt gốc
+             */
+
+            const index =
+                Number(
+                    row.dataset.index
+                );
+
+
+            if (
+                Number.isNaN(index) ||
+                !nnt[index]
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+             * Bỏ selected cũ
+             */
+
+            const oldSelected =
+                nntResult.querySelector(
+                    ".nnt-result-item.selected"
+                );
+
+
+            if (oldSelected) {
+
+                oldSelected.classList.remove(
+                    "selected"
+                );
+
+            }
+
+
+            /*
+             * Chọn dòng mới
+             */
+
+            row.classList.add(
+                "selected"
+            );
+
+
+            /*
+             * Lưu NNT
+             */
+
+            selectedNNTIndex =
+                index;
+
+            selectedNNT =
+                nnt[index];
+
+
+            /*
+             * Enable nút chọn
+             */
+
+            btnConfirmNNT.disabled =
+                false;
+
+        }
+    );
+
+
+    /* =========================================================
+       MỞ MODAL
+       ========================================================= */
+
+    btnOpenNNT.addEventListener(
+        "click",
+        function () {
+
+            /*
+             * Reset trạng thái tìm kiếm
+             */
+
+            nntSearchInput.value = "";
+
+
+            /*
+             * Không reset selectedNNT.
+             *
+             * Nếu đã chọn NNT trước đó,
+             * vẫn giữ NNT đó.
+             */
+
+            btnConfirmNNT.disabled =
+                !selectedNNT;
+
+
+            /*
+             * Hiện 20 NNT đầu
+             */
+
+            showDefaultNNT();
+
+
+            /*
+             * Mở modal
+             */
+
+            nntModal.classList.add(
+                "show"
+            );
+
+
+            /*
+             * Focus search
+             */
+
+            requestAnimationFrame(
+                function () {
+
+                    nntSearchInput.focus();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       ĐÓNG MODAL
+       ========================================================= */
+
+    function closeNNTModal() {
+
+        nntModal.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    btnCloseNNT.addEventListener(
+        "click",
+        closeNNTModal
+    );
+
+
+    btnCancelNNT.addEventListener(
+        "click",
+        closeNNTModal
+    );
+
+
+    /* =========================================================
+       CLICK RA NGOÀI
+       ========================================================= */
+
+    nntModal.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                nntModal
+            ) {
+
+                closeNNTModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       ESC ĐỂ ĐÓNG
+       ========================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                nntModal.classList.contains("show")
+            ) {
+
+                closeNNTModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       XÁC NHẬN CHỌN NNT
+       ========================================================= */
+
+    btnConfirmNNT.addEventListener("click", function () {
+
+        if (!selectedNNT) {
+            return;
+        }
+
+        document.getElementById("hoTen").textContent =
+            selectedNNT.tenNNT || "";
+
+        const soCCCD = document.getElementById("soCCCD");
+        const maSoThue = document.getElementById("maSoThue");
+
+        if (String(selectedNNT.maChuong) === "857") {
+
+            soCCCD.textContent =
+                selectedNNT.cccd || "";
+
+            maSoThue.textContent = "(" + selectedNNT.mst + ")" || "";
+
+        } else {
+
+            soCCCD.textContent = "";
+
+            maSoThue.textContent =
+                selectedNNT.mst || "";
+
+        }
+
+        document.getElementById("diaChiAp").textContent =
+            selectedNNT.tenAp || "";
+
+        document.getElementById("diaChiPhuongXa").textContent =
+            selectedNNT.tenXa || "";
+
+        document.getElementById("diaChiTinhTP").textContent =
+            selectedNNT.tenTinh || "";
+
+        updateTaxTable();
+
+        closeNNTModal();
+
+    });
+
+    /* =========================================================
+       FORMAT TIỀN
+       ========================================================= */
+
+    function formatCurrencyVND(value) {
+
+        return Number(
+            value || 0
+        ).toLocaleString(
+            "vi-VN",
+            {
+                maximumFractionDigits: 0
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       ĐỌC SỐ
+       ========================================================= */
+
+    const numberWords = [
+
+        "không",
+        "một",
+        "hai",
+        "ba",
+        "bốn",
+        "năm",
+        "sáu",
+        "bảy",
+        "tám",
+        "chín"
+
+    ];
+
+
+    function readThreeDigits(
+        number,
+        full = false
+    ) {
+
+        const tram =
+            Math.floor(
+                number / 100
+            );
+
+
+        const chuc =
+            Math.floor(
+                (number % 100) / 10
+            );
+
+
+        const donVi =
+            number % 10;
+
+
+        let result = "";
+
+
+        if (
+            tram > 0 ||
+            full
+        ) {
+
+            result +=
+                numberWords[tram] +
+                " trăm";
+
+
+            if (
+                chuc === 0 &&
+                donVi > 0
+            ) {
+
+                result +=
+                    " lẻ";
+
+            }
+
+        }
+
+
+        if (chuc > 1) {
+
+            result +=
+                " " +
+                numberWords[chuc] +
+                " mươi";
+
+
+            if (donVi === 1) {
+
+                result +=
+                    " mốt";
+
+            }
+            else if (
+                donVi === 5
+            ) {
+
+                result +=
+                    " lăm";
+
+            }
+            else if (
+                donVi > 0
+            ) {
+
+                result +=
+                    " " +
+                    numberWords[donVi];
+
+            }
+
+        }
+
+        else if (chuc === 1) {
+
+            result +=
+                " mười";
+
+
+            if (donVi === 1) {
+
+                result +=
+                    " một";
+
+            }
+            else if (
+                donVi === 5
+            ) {
+
+                result +=
+                    " lăm";
+
+            }
+            else if (
+                donVi > 0
+            ) {
+
+                result +=
+                    " " +
+                    numberWords[donVi];
+
+            }
+
+        }
+
+        else if (
+            chuc === 0 &&
+            donVi > 0
+        ) {
+
+            result +=
+                " " +
+                numberWords[donVi];
+
+        }
+
+
+        return result.trim();
+
+    }
+
+
+    function docSo(number) {
+
+        number =
+            Math.floor(
+                Number(
+                    number || 0
+                )
+            );
+
+
+        if (
+            number === 0
+        ) {
+
+            return "";
+
+        }
+
+
+        if (
+            number < 0
+        ) {
+
+            return (
+                "Âm " +
+                docSo(
+                    Math.abs(number)
+                )
+            );
+
+        }
+
+
+        const units = [
+
+            "",
+            "nghìn",
+            "triệu",
+            "tỷ",
+            "nghìn tỷ",
+            "triệu tỷ"
+
+        ];
+
+
+        const groups = [];
+
+
+        while (
+            number > 0
+        ) {
+
+            groups.push(
+                number % 1000
+            );
+
+
+            number =
+                Math.floor(
+                    number / 1000
+                );
+
+        }
+
+
+        let result = "";
+
+
+        for (
+            let i =
+                groups.length - 1;
+
+            i >= 0;
+
+            i--
+        ) {
+
+            const group =
+                groups[i];
+
+
+            if (
+                group === 0
+            ) {
+
+                continue;
+
+            }
+
+
+            const full =
+                i <
+                    groups.length - 1 &&
+                group < 100;
+
+
+            let text =
+                readThreeDigits(
+                    group,
+                    full
+                );
+
+
+            if (
+                result !== ""
+            ) {
+
+                result += " ";
+
+            }
+
+
+            result += text;
+
+
+            if (
+                units[i]
+            ) {
+
+                result +=
+                    " " +
+                    units[i];
+
+            }
+
+        }
+
+
+        return (
+            result.charAt(0).toUpperCase() +
+            result.slice(1)
+        );
+
+    }
+
+
+    /* =========================================================
+    CHỌN TIỂU MỤC
+    ========================================================= */
+
+    const btnOpenTieuMuc =
+        document.getElementById("btnOpenTieuMuc");
+
+    const tieumucModal =
+        document.getElementById("tieumucModal");
+
+    const btnCloseTieuMuc =
+        document.getElementById("btnCloseTieuMuc");
+
+    const btnCancelTieuMuc =
+        document.getElementById("btnCancelTieuMuc");
+
+    const btnConfirmTieuMuc =
+        document.getElementById("btnConfirmTieuMuc");
+
+    const tieumucSearchInput =
+        document.getElementById("tieumucSearchInput");
+
+    const tieumucResult =
+        document.getElementById("tieumucResult");
+
+
+    /*
+    * Danh sách tiểu mục đang chọn
+    */
+    let selectedTieuMuc = [];
+
+
+    /* =========================================================
+    RENDER TIỂU MỤC
+    ========================================================= */
+
+    function renderTieuMuc(list) {
+
+        if (!list.length) {
+
+            tieumucResult.innerHTML = `
+                <div class="tieumuc-empty">
+                    Không tìm thấy tiểu mục phù hợp
+                </div>
+            `;
+
+            return;
+        }
+
+
+        tieumucResult.innerHTML =
+            list.map(function(item, index) {
+
+                const selectedItem =
+                    selectedTieuMuc.find(function(x) {
+
+                        return (
+                            x.ma_tieu_muc ===
+                            item.ma_tieu_muc
+                        );
+
+                    });
+
+
+                const selected =
+                    !!selectedItem;
+
+
+                return `
+
+                    <div
+                        class="
+                            tieumuc-item
+                            ${selected ? "selected" : ""}
+                        "
+                        data-index="${index}"
+                    >
+
+                        <div class="tieumuc-checkbox">
+
+                            ${selected ? "✓" : ""}
+
+                        </div>
+
+
+                        <div class="tieumuc-info">
+
+                            <div class="tieumuc-name">
+
+                                ${escapeHtml(
+                                    item.ten_tieu_muc
+                                )}
+
+                            </div>
+
+
+                            <div class="tieumuc-code">
+
+                                Mã tiểu mục:
+
+                                <strong>
+                                    ${escapeHtml(
+                                        item.ma_tieu_muc
+                                    )}
+                                </strong>
+
+                                &nbsp; • &nbsp;
+
+                                ${escapeHtml(
+                                    item.ten_muc
+                                )}
+
+                            </div>
+
+
+                            ${
+                                selected
+                                ?
+                                `
+
+                                <div
+                                    class="tieumuc-money"
+                                    onclick="event.stopPropagation()"
+                                >
+
+                                    <label>
+                                        Số tiền
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="tieumuc-money-input"
+                                        data-ma="${escapeHtml(
+                                            item.ma_tieu_muc
+                                        )}"
+                                        value="${
+                                            selectedItem.so_tien
+                                            ?
+                                            Number(
+                                                selectedItem.so_tien
+                                            ).toLocaleString("vi-VN")
+                                            :
+                                            ""
+                                        }"
+                                        placeholder="Nhập số tiền..."
+                                        inputmode="numeric"
+                                    > đồng
+
+                                </div>
+
+                                `
+                                :
+                                ""
+                            }
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }).join("");
+    }
+
+    tieumucResult.addEventListener(
+        "click",
+        function(event) {
+
+            const row =
+                event.target.closest(
+                    ".tieumuc-item"
+                );
+
+            if (!row) {
+                return;
+            }
+
+
+            const index =
+                Number(row.dataset.index);
+
+
+            const keyword =
+                normalizeText(
+                    tieumucSearchInput.value
+                );
+
+
+            const list =
+                getTieuMucList(keyword);
+
+
+            const item =
+                list[index];
+
+
+            if (!item) {
+                return;
+            }
+
+
+            const selectedIndex =
+                selectedTieuMuc.findIndex(
+                    function(x) {
+
+                        return (
+                            x.ma_tieu_muc ===
+                            item.ma_tieu_muc
+                        );
+
+                    }
+                );
+
+
+            if (selectedIndex >= 0) {
+
+                /*
+                * Bỏ chọn
+                */
+                selectedTieuMuc.splice(
+                    selectedIndex,
+                    1
+                );
+
+            } else {
+
+                /*
+                * Chọn mới
+                */
+                selectedTieuMuc.push({
+
+                    ...item,
+
+                    so_tien: 0
+
+                });
+
+            }
+
+
+            /*
+            * Render lại
+            * → input số tiền xuất hiện
+            */
+            renderTieuMuc(list);
+
+        }
+    );
+
+    tieumucResult.addEventListener(
+        "input",
+        function(event) {
+
+            const input =
+                event.target.closest(
+                    ".tieumuc-money-input"
+                );
+
+            if (!input) {
+                return;
+            }
+
+
+            const ma =
+                input.dataset.ma;
+
+
+            /*
+            * Chỉ lấy số
+            */
+            const raw =
+                input.value.replace(/\D/g, "");
+
+
+            const value =
+                Number(raw || 0);
+
+
+            /*
+            * Format tiền
+            */
+            input.value =
+                value
+                    ? value.toLocaleString("vi-VN")
+                    : "";
+
+
+            /*
+            * Tìm tiểu mục đang chọn
+            */
+            const item =
+                selectedTieuMuc.find(
+                    function(x) {
+
+                        return (
+                            x.ma_tieu_muc ===
+                            ma
+                        );
+
+                    }
+                );
+
+
+            if (item) {
+
+                item.so_tien =
+                    value;
+
+            }
+
+        }
+    );
+
+    function getTieuMucList(keyword = "") {
+
+        const query = normalizeText(keyword);
+
+        if (!query) {
+            return dmTieuMuc;
+        }
+
+        return dmTieuMuc.filter(function(item) {
+
+            return (
+                normalizeText(item.ten_tieu_muc).includes(query) ||
+                normalizeText(item.ma_tieu_muc).includes(query) ||
+                normalizeText(item.ten_muc).includes(query) ||
+                normalizeText(item.ma_muc).includes(query)
+            );
+
+        });
+    }
+
+    tieumucSearchInput.addEventListener(
+        "input",
+        function() {
+
+            renderTieuMuc(
+                getTieuMucList(
+                    this.value
+                )
+            );
+
+        }
+    );
+
+    btnOpenTieuMuc.addEventListener(
+        "click",
+        function() {
+
+            tieumucSearchInput.value = "";
+
+            renderTieuMuc(dmTieuMuc);
+
+            tieumucModal.classList.add(
+                "show"
+            );
+
+            requestAnimationFrame(
+                function() {
+
+                    tieumucSearchInput.focus();
+
+                }
+            );
+
+        }
+    );
+
+    function closeTieuMucModal() {
+
+        tieumucModal.classList.remove(
+            "show"
+        );
+
+    }
+
+    btnCloseTieuMuc.addEventListener(
+        "click",
+        closeTieuMucModal
+    );
+
+    btnCancelTieuMuc.addEventListener(
+        "click",
+        closeTieuMucModal
+    );
+
+
+    tieumucModal.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                tieumucModal
+            ) {
+
+                closeTieuMucModal();
+
+            }
+
+        }
+    );
+
+    btnConfirmTieuMuc.addEventListener(
+        "click",
+        function() {
+
+            /*
+            * Không chọn gì
+            */
+            if (
+                selectedTieuMuc.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+            * Cập nhật dữ liệu bảng
+            */
+            data.length = 0;
+
+            selectedTieuMuc.forEach(
+                function(item) {
+
+                    data.push({
+                        so_tien:
+                            Number(
+                                item.so_tien || 0
+                            ),
+
+                        ten_tieu_muc:
+                            item.ten_tieu_muc,
+
+                        ma_tieu_muc:
+                            item.ma_tieu_muc
+
+                    });
+
+                }
+            );
+
+
+            /*
+            * Vẽ lại bảng
+            */
+            updateTaxTable();
+
+
+            /*
+            * Đóng modal
+            */
+            closeTieuMucModal();
+
+        }
+    );
+
+    /* =========================================================
+       TẠO / CẬP NHẬT BẢNG
+       ========================================================= */
+
+    function updateTaxTable() {
+
+        const tbody =
+            document.getElementById(
+                "taxTableBody"
+            );
+
+
+        let tongCong = 0;
+
+
+        /*
+         * Xóa bảng cũ
+         */
+
+        tbody.innerHTML = "";
+
+
+        /*
+         * Tạo DocumentFragment
+         *
+         * Thay vì append từng row vào DOM,
+         * tạo bên ngoài rồi append 1 lần.
+         */
+
+        const fragment =
+            document.createDocumentFragment();
+
+
+        data.forEach(
+            function (
+                item,
+                index
+            ) {
+
+                const soTien =
+                    Number(
+                        item.so_tien || 0
+                    );
+
+
+                tongCong +=
+                    soTien;
+
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                let tmCell = '';
+                if (soTien > 0) {
+                    tmCell = `
+                        ${escapeHtml(
+                            item.ten_tieu_muc
+                        )}
+
+                        (Mã chương:
+
+                        ${escapeHtml(
+                            selectedNNT?.maChuong || ""
+                        )}
+
+                        , TM:
+
+                        ${escapeHtml(
+                            item.ma_tieu_muc
+                        )}
+
+                        )
+                    `
+                }
+
+                row.innerHTML = `
+
+                    <td class="text-center">
+                        ${index + 1}
+                    </td>
+
+                    <td></td>
+
+                    <td class="text-center"></td>
+
+                    <td>
+                        ${tmCell}
+                    </td>
+
+                    <td class="text-right">
+
+                        ${ soTien > 0 ? formatCurrencyVND(soTien) : ''}
+
+                    </td>
+
+                `;
+
+
+                fragment.appendChild(
+                    row
+                );
+
+            }
+        );
+
+
+        /*
+         * Dòng tổng
+         */
+
+        const totalRow =
+            document.createElement(
+                "tr"
+            );
+
+
+        totalRow.innerHTML = `
+
+            <th
+                colspan="4"
+                class="text-center">
+
+                Tổng số tiền
+
+            </th>
+
+            <th class="text-right">
+
+                ${tongCong > 0 ? formatCurrencyVND(tongCong) : ''}
+
+            </th>
+
+        `;
+
+
+        fragment.appendChild(
+            totalRow
+        );
+
+
+        /*
+         * Append toàn bộ 1 lần
+         */
+
+        tbody.appendChild(fragment);
+
+
+        /*
+         * Số tiền bằng chữ
+         */
+        const tongCongTxt = docSo(tongCong);
+        
+        
+        document.getElementById("amountInWords").textContent = tongCongTxt.length > 0 ? tongCongTxt + ' đồng' : '...............................................................................................................';
+
+    }
+
+
+    /* =========================================================
+       KHỞI TẠO BẢNG
+       ========================================================= */
+
+    updateTaxTable();
+
+
+    /* =========================================================
+       NĂM
+       ========================================================= */
+
+    const namIn =
+        new Date().getFullYear();
+
+
+    document.getElementById(
+        "namIn"
+    ).textContent =
+        namIn;
+
+
+    document.getElementById(
+        "namIn2"
+    ).textContent =
+        namIn;
+
+    /* =========================================================
+    LƯU CƠ QUAN THU THEO TỪNG MÁY / TRÌNH DUYỆT
+    ========================================================= */
+
+    const maCoQuanThu =
+        document.getElementById("maCoQuanThu");
+
+    const STORAGE_KEY =
+        "bknt_maCoQuanThu";
+
+
+    /*
+    * Khi mở trang:
+    * lấy lựa chọn đã lưu
+    */
+    const savedMaCoQuanThu =
+        localStorage.getItem(STORAGE_KEY);
+
+    if (savedMaCoQuanThu) {
+
+        /*
+        * Kiểm tra mã có tồn tại trong select không
+        */
+        const optionExists =
+            Array.from(
+                maCoQuanThu.options
+            ).some(function(option) {
+
+                return option.value === savedMaCoQuanThu;
+
+            });
+
+
+        if (optionExists) {
+
+            maCoQuanThu.value =
+                savedMaCoQuanThu;
+
+        }
+
+    }
+
+
+    /*
+    * Khi người dùng chọn lại:
+    * lưu ngay vào máy
+    */
+    maCoQuanThu.addEventListener(
+        "change",
+        function() {
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                this.value
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1880 @@
+@page {
+    size: A4;
+    margin: 1.5cm;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #eeeeee;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 13pt;
+    color: #000;
+}
+
+.a4-container {
+    position: relative;
+
+    width: 210mm;
+
+    margin: 0 auto;
+}
+
+.page {
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: 0;
+
+    padding: 1.3cm;
+
+    background: #fff;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+p {
+    margin: 6px 0;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 4px 5px;
+    vertical-align: middle;
+}
+
+.no-border td,
+.no-border th {
+    border: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.fs-14 {
+    font-size: 14pt;
+}
+
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.header-table td {
+    border: none;
+}
+
+.checkbox {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #000;
+    vertical-align: -1px;
+    margin-left: 3px;
+    margin-right: 3px;
+    position: relative;
+}
+
+.checkbox.checked::after {
+    content: "✓";
+    position: absolute;
+    left: 1px;
+    top: -6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tax-table {
+    width: 100%;
+    margin-top: 12px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tax-table th,
+.tax-table td {
+    border: 1px solid #000;
+}
+
+.tax-table th {
+    text-align: center;
+    font-weight: bold;
+    height: 40px;
+}
+
+.tax-table td {
+    min-height: 27px;
+    height: 27px;
+}
+
+.col-stt {
+    width: 7%;
+}
+
+.col-to-khai {
+    width: 15%;
+}
+
+.col-ky-thue {
+    width: 15%;
+}
+
+.col-noi-dung {
+    width: 43%;
+}
+
+.col-so-tien {
+    width: 20%;
+}
+
+.total-row th {
+    height: 32px;
+}
+
+.amount-in-words {
+    margin-top: 8px;
+}
+
+.signature-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.signature-table td,
+.signature-table th {
+    border: none;
+}
+
+.signature-space {
+    height: 90px;
+}
+
+.signature-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.small-text {
+    font-size: 11pt;
+}
+
+/* =====================================================
+NÚT CHỌN NNT
+===================================================== */
+.nnt-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    color: rgb(230, 61, 0);
+}
+
+.mst-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    color: dodgerblue;
+}
+
+.nnt-toolbar {
+    display: inline-flex;
+    margin-left: 10px;
+}
+
+.btn-chon-nnt {
+    border: 0;
+    padding: 6px 12px;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.btn-chon-nnt:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.btn-chon-nnt:active {
+    transform: scale(.97);
+}
+
+.nnt-current {
+    flex: 1;
+}
+
+/* =====================================================
+EMPTY
+===================================================== */
+
+.nnt-empty {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   MODAL - ANIMATION
+   ===================================================== */
+
+.nnt-modal {
+    display: flex;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    /*
+     * Mặc định ẩn
+     */
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+/*
+ * MODAL MỞ
+ */
+
+.nnt-modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* =====================================================
+   MODAL BOX
+   ===================================================== */
+
+.nnt-modal-box {
+    width: 800px;
+    max-width: 100%;
+
+    /* Không cố định chiều cao */
+    height: auto;
+
+    /* Luôn nằm gọn trong màn hình */
+    max-height: calc(100vh - 40px);
+
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25),
+        0 8px 20px rgba(0, 0, 0, 0.12);
+
+    opacity: 0;
+
+    transform:
+        translateY(25px)
+        scale(0.96);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.3s cubic-bezier(
+            0.34,
+            1.56,
+            0.64,
+            1
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+/*
+ * Khi modal mở
+ */
+
+.nnt-modal.show .nnt-modal-box {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.nnt-modal-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 20px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #fafafa
+        );
+}
+
+
+.nnt-modal-title {
+
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #111827;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.nnt-modal-title::before {
+
+    content: "👤";
+
+    font-size: 19px;
+
+}
+
+
+/* =====================================================
+   CLOSE BUTTON
+   ===================================================== */
+
+.nnt-modal-close {
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f3f4f6;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    color: #6b7280;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.nnt-modal-close:hover {
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    transform:
+        rotate(90deg)
+        scale(1.05);
+
+}
+
+
+.nnt-modal-close:active {
+
+    transform:
+        rotate(90deg)
+        scale(0.9);
+
+}
+
+
+/* =====================================================
+   SEARCH AREA
+   ===================================================== */
+
+.nnt-modal-search {
+
+    padding: 16px 20px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    background: #fafafa;
+}
+
+
+.nnt-search-input-wrapper {
+
+    position: relative;
+
+}
+
+
+.nnt-search-icon {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #9ca3af;
+
+    font-size: 17px;
+
+    pointer-events: none;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+#nntSearchInput {
+
+    width: 100%;
+
+    height: 46px;
+
+    padding:
+        0 14px 0 42px;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: white;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+#nntSearchInput:hover {
+
+    border-color: #9ca3af;
+
+}
+
+
+#nntSearchInput:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37, 99, 235, 0.10);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+#nntSearchInput:focus
+~ .nnt-search-icon {
+
+    color: #2563eb;
+
+}
+
+
+/* =====================================================
+   RESULT BODY
+   ===================================================== */
+
+.nnt-modal-body {
+    flex: 1 1 auto;
+
+    /*
+     * Cho phép body co lại trên màn hình nhỏ
+     */
+    min-height: 0;
+
+    /*
+     * Không ép height 420px nữa
+     */
+    height: auto;
+    max-height: none;
+
+    overflow-y: auto;
+
+    scroll-behavior: smooth;
+}
+
+
+/*
+ * Scrollbar
+ */
+
+.nnt-modal-body::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+.nnt-modal-body::-webkit-scrollbar-track {
+
+    background: #f8fafc;
+
+}
+
+
+.nnt-modal-body::-webkit-scrollbar-thumb {
+
+    background: #cbd5e1;
+
+    border-radius: 10px;
+
+}
+
+
+.nnt-modal-body::-webkit-scrollbar-thumb:hover {
+
+    background: #94a3b8;
+
+}
+
+
+/* =====================================================
+   COUNT
+   ===================================================== */
+
+.nnt-result-count {
+
+    padding:
+        9px 20px;
+
+    font-size: 12px;
+
+    color: #6b7280;
+
+    background: #f8fafc;
+
+    border-bottom:
+        1px solid #f0f0f0;
+
+}
+
+
+/* =====================================================
+   RESULT ITEM
+   ===================================================== */
+
+.nnt-result-item {
+
+    position: relative;
+
+    padding:
+        15px 20px;
+
+    border-bottom:
+        1px solid #f0f0f0;
+
+    cursor: pointer;
+
+    background: white;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        padding-left 0.2s ease,
+        box-shadow 0.2s ease;
+
+    /*
+     * Animation khi render
+     */
+
+    animation:
+        nntItemIn
+        0.3s ease
+        both;
+}
+
+
+/*
+ * Delay từng item
+ */
+
+.nnt-result-item:nth-child(2) {
+    animation-delay: 0.03s;
+}
+
+.nnt-result-item:nth-child(3) {
+    animation-delay: 0.06s;
+}
+
+.nnt-result-item:nth-child(4) {
+    animation-delay: 0.09s;
+}
+
+.nnt-result-item:nth-child(5) {
+    animation-delay: 0.12s;
+}
+
+.nnt-result-item:nth-child(6) {
+    animation-delay: 0.15s;
+}
+
+.nnt-result-item:nth-child(7) {
+    animation-delay: 0.18s;
+}
+
+.nnt-result-item:nth-child(8) {
+    animation-delay: 0.21s;
+}
+
+
+@keyframes nntItemIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   HOVER ITEM
+   ===================================================== */
+
+.nnt-result-item:hover {
+
+    background:
+        #f8fbff;
+
+    padding-left:
+        25px;
+
+    box-shadow:
+        inset 3px 0 0 #93c5fd;
+
+}
+
+
+/* =====================================================
+   ITEM ĐƯỢC CHỌN
+   ===================================================== */
+
+.nnt-result-item.selected {
+
+    background:
+        linear-gradient(
+            90deg,
+            #eff6ff,
+            #f8fbff
+        );
+
+    padding-left:
+        25px;
+
+    box-shadow:
+        inset 4px 0 0 #2563eb;
+
+}
+
+
+/*
+ * Dấu check bên phải
+ */
+
+.nnt-result-item.selected::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    right: 20px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        scale(1);
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    animation:
+        checkPop
+        0.25s
+        cubic-bezier(
+            0.34,
+            1.56,
+            0.64,
+            1
+        );
+}
+
+
+@keyframes checkPop {
+
+    from {
+
+        transform:
+            translateY(-50%)
+            scale(0);
+
+    }
+
+    to {
+
+        transform:
+            translateY(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   TÊN NNT
+   ===================================================== */
+
+.nnt-result-name {
+
+    padding-right: 40px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #111827;
+
+    line-height: 1.45;
+
+}
+
+
+/* =====================================================
+   INFO TAG
+   ===================================================== */
+
+.nnt-result-info {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 8px;
+
+}
+
+
+.nnt-tag {
+
+    padding:
+        4px 8px;
+
+    border-radius: 5px;
+
+    background: #f3f4f6;
+
+    font-size: 12px;
+
+    color: #4b5563;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.nnt-result-item:hover
+.nnt-tag {
+
+    background:
+        #e8f1ff;
+
+}
+
+
+.nnt-result-address {
+
+    margin-top: 7px;
+
+    font-size: 12px;
+
+    color: #6b7280;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.nnt-modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding:
+        14px 20px;
+
+    border-top:
+        1px solid #e5e7eb;
+
+    background:
+        #fafafa;
+
+}
+
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+.btn-modal {
+
+    min-width: 90px;
+
+    padding:
+        9px 17px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        all 0.2s ease;
+}
+
+
+.btn-cancel {
+
+    border:
+        1px solid #d1d5db;
+
+    background: white;
+
+    color: #374151;
+
+}
+
+
+.btn-cancel:hover {
+
+    background: #f3f4f6;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.btn-confirm {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: white;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 3px 8px
+        rgba(37, 99, 235, 0.25);
+
+}
+
+
+.btn-confirm:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 14px
+        rgba(37, 99, 235, 0.30);
+
+}
+
+
+.btn-confirm:active:not(:disabled) {
+
+    transform:
+        translateY(0)
+        scale(0.97);
+
+}
+
+
+.btn-confirm:disabled {
+
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+}
+
+
+/* =====================================================
+   EMPTY
+   ===================================================== */
+
+.nnt-empty {
+
+    padding:
+        50px 20px;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+    animation:
+        nntEmptyIn
+        0.3s ease;
+}
+
+
+@keyframes nntEmptyIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+/* =====================================================
+   TOOLBAR BÁM THEO MÉP PHẢI A4
+   ===================================================== */
+
+.side-toolbar {
+    position: absolute;
+
+    left: calc(100% + 18px);
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    z-index: 1000;
+}
+
+
+/* =====================================================
+   NÚT TOOLBAR
+   ===================================================== */
+
+.side-btn {
+    position: relative;
+
+    width: 155px;
+    height: 52px;
+
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 11px;
+
+    padding: 0 16px;
+
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, .16),
+        inset 0 1px 0 rgba(255,255,255,.25);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        filter .2s ease;
+}
+
+
+.side-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left .5s ease;
+}
+
+
+.side-btn:hover::before {
+    left: 130%;
+}
+
+
+/* =====================================================
+   ICON
+   ===================================================== */
+
+.side-btn::after {
+    content: "";
+
+    position: absolute;
+
+    right: 13px;
+
+    width: 6px;
+    height: 6px;
+
+    border-top: 2px solid rgba(255,255,255,.7);
+    border-right: 2px solid rgba(255,255,255,.7);
+
+    transform: rotate(45deg);
+
+    opacity: .7;
+
+    transition:
+        right .2s ease,
+        opacity .2s ease;
+}
+
+
+/* =====================================================
+   HOVER
+   ===================================================== */
+
+.side-btn:hover {
+    transform: translateX(-6px);
+
+    box-shadow:
+        0 12px 28px rgba(15,23,42,.22),
+        inset 0 1px 0 rgba(255,255,255,.3);
+
+    filter: brightness(1.06);
+}
+
+
+.side-btn:hover::after {
+    right: 10px;
+    opacity: 1;
+}
+
+
+/* =====================================================
+   CLICK
+   ===================================================== */
+
+.side-btn:active {
+    transform:
+        translateX(-3px)
+        scale(.97);
+}
+
+
+/* =====================================================
+   NÚT CHỌN NNT
+   ===================================================== */
+
+.btn-nnt {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb 0%,
+            #1d4ed8 100%
+        );
+}
+
+
+/* =====================================================
+   NÚT CHỌN TIỂU MỤC
+   ===================================================== */
+
+.btn-tieumuc {
+    background:
+        linear-gradient(
+            135deg,
+            #10b981 0%,
+            #059669 100%
+        );
+}
+
+
+/* =====================================================
+   ICON TRONG BUTTON
+   ===================================================== */
+
+.side-btn span {
+    position: relative;
+    z-index: 2;
+
+    white-space: nowrap;
+}
+
+/* =====================================================
+   MÀN HÌNH NHỎ
+   ===================================================== */
+
+@media (max-width: 1200px) {
+
+    .side-toolbar {
+
+        /*
+         * Nếu không đủ chỗ bên phải A4
+         * thì đưa toolbar xuống dưới
+         */
+
+        position: fixed;
+
+        left: auto;
+        right: 15px;
+
+        top: auto;
+        bottom: 15px;
+
+        transform: none;
+
+        flex-direction: row;
+    }
+
+}
+
+
+/* =====================================================
+   NÚT CHỌN NNT BÊN NGOÀI
+   ===================================================== */
+
+.btn-chon-nnt {
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding:
+        10px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        rgba(37, 99, 235, 0.25);
+
+    transition:
+        all 0.2s ease;
+}
+
+
+.btn-chon-nnt:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 16px
+        rgba(37, 99, 235, 0.30);
+
+}
+
+
+.btn-chon-nnt:active {
+
+    transform:
+        translateY(0)
+        scale(0.97);
+
+}
+
+
+/* =====================================================
+   NNT ĐANG CHỌN
+   ===================================================== */
+
+.nnt-current {
+
+    padding:
+        9px 14px;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    background: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+    flex: 1;
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.nnt-current.has-value {
+
+    color: #1e40af;
+
+    border-color:
+        #93c5fd;
+
+    background:
+        #eff6ff;
+
+    animation:
+        selectedNNT
+        0.4s ease;
+}
+
+
+@keyframes selectedNNT {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-5px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+/* =====================================================
+   MODAL CHỌN TIỂU MỤC
+   ===================================================== */
+
+.tieumuc-modal {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    background: rgba(15, 23, 42, .45);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+.tieumuc-modal.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tieumuc-modal-box {
+    width: 700px;
+    max-width: 100%;
+
+    height: 650px;
+    max-height: calc(100vh - 40px);
+
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25),
+        0 8px 20px rgba(0,0,0,.12);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    transform:
+        translateY(20px)
+        scale(.97);
+
+    transition:
+        transform .3s ease;
+}
+
+.tieumuc-modal.show .tieumuc-modal-box {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* HEADER */
+
+.tieumuc-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    background: linear-gradient(
+        to bottom,
+        #fff,
+        #fafafa
+    );
+}
+
+.tieumuc-modal-title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #111827;
+}
+
+.tieumuc-modal-title::before {
+    content: "📋";
+    margin-right: 8px;
+}
+
+.tieumuc-modal-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f3f4f6;
+
+    font-size: 22px;
+    line-height: 1;
+
+    color: #6b7280;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.tieumuc-modal-close:hover {
+    background: #fee2e2;
+    color: #dc2626;
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* SEARCH */
+
+.tieumuc-modal-search {
+    padding: 15px 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    background: #fafafa;
+}
+
+.tieumuc-search-wrapper {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    height: 44px;
+
+    padding: 0 14px;
+
+    background: #fff;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    transition: .2s ease;
+}
+
+.tieumuc-search-wrapper:focus-within {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(37,99,235,.10);
+}
+
+#tieumucSearchInput {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    font-size: 14px;
+}
+
+
+/* BODY */
+
+.tieumuc-modal-body {
+    flex: 1;
+
+    overflow-y: auto;
+
+    background: #fff;
+}
+
+.tieumuc-item {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 20px;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.tieumuc-item:hover {
+    background: #f8fbff;
+}
+
+.tieumuc-item.selected {
+    background: #eff6ff;
+
+    box-shadow:
+        inset 4px 0 0 #2563eb;
+}
+
+.tieumuc-checkbox {
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+
+    border: 2px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-size: 13px;
+
+    transition: .2s ease;
+}
+
+.tieumuc-item.selected
+.tieumuc-checkbox {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.tieumuc-info {
+    flex: 1;
+}
+
+.tieumuc-name {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #111827;
+}
+
+.tieumuc-code {
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    color: #6b7280;
+}
+
+.tieumuc-empty {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* FOOTER */
+
+.tieumuc-modal-footer {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 14px 20px;
+
+    border-top: 1px solid #e5e7eb;
+
+    background: #fafafa;
+}
+
+.tieumuc-money {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tieumuc-money label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.tieumuc-money-input {
+    width: 180px;
+    height: 36px;
+    padding: 0 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-align: right;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease;
+
+    color: orangered;
+}
+
+.tieumuc-money-input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, .12);
+}
+
+.tieumuc-item.selected {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+/* =========================================================
+   SELECT CƠ QUAN THU
+   ========================================================= */
+
+#maCoQuanThu {
+    padding: 5px 10px;
+    min-width: 420px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border: 2px solid #2563eb;
+    border-radius: 6px;
+
+    background-color: #eff6ff;
+    color: #1e3a8a;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        background-color 0.2s;
+}
+
+
+/* Khi rê chuột */
+#maCoQuanThu:hover {
+    border-color: #1d4ed8;
+    background-color: #dbeafe;
+}
+
+
+/* Khi đang chọn */
+#maCoQuanThu:focus {
+    border-color: #1d4ed8;
+    background-color: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+
+/* =====================================================
+PRINT
+===================================================== */
+@media print {
+    body {
+        padding: 0;
+        background: #fff;
+    }
+
+    .a4-container {
+
+        width: 210mm;
+
+        margin: 0;
+    }
+
+    .page {
+
+        width: 210mm;
+
+        min-height: 297mm;
+
+        margin: 0;
+
+        padding: 0;
+
+        box-shadow: none;
+    }
+
+    .nnt-line {
+        color: #000 !important;
+    }
+
+    .mst-line {
+        color: #000 !important;
+    }
+
+    .side-toolbar {
+
+        display: none !important;
+    }
+
+    #maCoQuanThu {
+        /*
+         * Khi in thì bỏ giao diện select nổi bật
+         */
+        border: none;
+        outline: none;
+        box-shadow: none;
+
+        background: transparent;
+
+        color: #000;
+
+        padding: 0;
+
+        font-size: 13pt;
+        font-weight: normal;
+        font-family: "Times New Roman", Times, serif;
+
+        appearance: none;
+        -webkit-appearance: none;
+    }
+}
+
+.print-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 10px 18px;
+    border: none;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.print-button:hover {
+    background: #555;
+}

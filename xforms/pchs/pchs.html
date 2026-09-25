@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Chuyển Hồ Sơ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/vn.min.js"></script>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn-add" onclick="addRow()">➕ Thêm hồ sơ</button>
+        <button class="btn-time" onclick="updateAllRowTimes()">🕒 Cập nhật thời gian bàn giao</button>
+        <button class="btn-print" onclick="window.print()">🖨️ In Phiếu</button>
+        <button class="btn-pdf" onclick="exportPDF()">💾 Lưu PDF</button>
+    </div>
+
+    <input type="file" id="filePicker" accept=".pdf" style="display: none;">
+
+    <div class="container" id="printableArea">
+        <div class="header">
+            <div class="header-left">
+                <div contenteditable="true">Thuế Tỉnh Cà Mau</div>
+                <div contenteditable="true" style="font-weight: bold; text-decoration: underline;">Thuế cơ sở 6 tỉnh Cà Mau</div>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="title" contenteditable="true">Phiếu chuyển hồ sơ</div>
+
+        <div class="info-section">
+            <div>
+                <b>Bộ phận giao:</b>
+
+                <select id="boPhanGiao">
+                    <option>Bộ phận Tiếp nhận và trả kết quả Nơi tiếp nhận (TTPVHCC/BPMC)</option>
+                    <option>Tổ Quản lý, hỗ trợ cá nhân, hộ kinh doanh</option>
+                    <option>Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option>Tổ Quản lý các khoản thu khác</option>
+                </select>
+
+                <span id="boPhanGiaoPrint" style="display:none"></span>
+            </div>
+
+            <div>
+                <b>Bộ phận nhận:</b>
+
+                <select id="boPhanNhan">
+                    <option>Bộ phận Tiếp nhận và trả kết quả Nơi tiếp nhận (TTPVHCC/BPMC)</option>
+                    <option>Tổ Quản lý, hỗ trợ cá nhân, hộ kinh doanh</option>
+                    <option>Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option>Tổ Quản lý các khoản thu khác</option>
+                </select>
+
+                <span id="boPhanNhanPrint" style="display:none"></span>
+            </div>
+            <div><b>Cơ quan thuế xử lý:</b> <span contenteditable="true">Thuế cơ sở 6 tỉnh Cà Mau</span></div>
+        </div>
+
+        <table id="hosoTable">
+            <thead>
+                <tr>
+                    <th style="width: 3%">STT</th>
+                    <th style="width: 13%">Mã hồ sơ</th>
+                    <th style="width: 15%">Tên hồ sơ</th>
+                    <th style="width: 15%">Thành phần hồ sơ</th>
+                    <th style="width: 8%">Ngày nộp</th>
+                    <th style="width: 9%">Mã số thuế</th>
+                    <th style="width: 13%">Tên người nộp thuế</th>
+                    <th style="width: 5%">Bản điện tử</th>
+                    <th style="width: 5%">Bản giấy</th>
+                    <th style="width: 10%">Thời gian bàn giao</th>
+                    <th class="btn-remove" style="border: none; background: transparent;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stt">1</td>
+                    <td contenteditable="true"></td>
+                    <td class="tthc-cell">
+                        <div class="cell-wrap">
+                            <span class="cell-text" contenteditable="true"></span>
+                            <span class="search-icon"
+                                onclick="openSearch(this.closest('td'))">
+                                🔍
+                            </span>
+                        </div>
+                    </td>
+                    <td contenteditable="true" ondblclick="triggerFilePicker(this)">Chọn tệp để lấy tên</td>
+                    <td onclick="pickDate(this)" class="date-cell"></td>
+                    <td class="mst-cell">
+                        <div class="cell-wrap">
+                            <span class="cell-text" contenteditable="true"></span>
+                        </div>
+                    </td>
+                    <td class="name-cell">
+                        <div class="cell-wrap">
+                            <span class="cell-text" contenteditable="true"></span>
+                            <span class="search-icon"
+                                onclick="openNNTSearch(this.closest('tr').querySelector('.name-cell'),'name')">
+                                🔍
+                            </span>
+                        </div>
+                    </td>
+                    <td contenteditable="true">Có</td>
+                    <td contenteditable="true">Có</td>
+                    <td contenteditable="true" class="col-time"></td>
+                    <td class="btn-remove" style="border: none; background: transparent;"><button onclick="removeRow(this)">X</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+
+        <div class="signatures">
+            <div class="signature-block">
+                <div class="signature-title">Người giao:</div>
+                <select id="nguoiGiao">
+                    <option>Trịnh Minh Trí</option>
+                    <option>Phạm Ngọc Ngân</option>
+                </select>
+
+                <span id="nguoiGiaoPrint" class="nguoi-giao-print"></span>
+                <div class="signature-details">
+                </div>
+            </div>
+            <div class="signature-block">
+                <div class="signature-title">Người nhận:</div>
+                <input
+                    id="nguoiNhan"
+                    list="dsNguoiNhan"
+                    placeholder="Chọn hoặc nhập tên..."
+                    autocomplete="off">
+
+                <datalist id="dsNguoiNhan">
+
+                    <option value="Dương Văn Pha">Tổ QL, HT CNHKD 9504</option>
+                    <option value="Lâm Văn Toàn">Tổ QL, HT CNHKD 9504</option>
+                    <option value="Lâm Thanh Hiền">Tổ QL, HT CNHKD 9504</option>
+                    <option value="Nguyễn Phương Tùng">Tổ QL, HT CNHKD 9504</option>
+                    <option value="Nguyễn Thị Mỹ Duyên">Tổ QL, HT CNHKD 9504</option>
+
+                    <option value="Trịnh Quốc Tuấn">Tổ QL, HT CNHKD 9505</option>
+                    <option value="Trần Chí Cường">Tổ QL, HT CNHKD 9505</option>
+                    <option value="Nguyễn Thị Vân Anh">Tổ QL, HT CNHKD 9505</option>
+
+                    <option value="Huỳnh Quốc Hưng">Tổ Quản lý các khoản thu khác</option>
+                    <option value="Nguyễn Thúy Duy">Tổ Quản lý các khoản thu khác</option>
+                    <option value="Thái Hồng Huệ">Tổ Quản lý các khoản thu khác</option>
+
+                    <option value="Đoàn Ngọc Viễn">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Thái Trường Duy">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Lê Văn Mun">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Lâm Hoàng Thi">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Trần Bé Thúy">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Phan Bích Hà">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Phạm Thị Thu Thủy">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Chiêm Thị Kim Huê">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+                    <option value="Trần Thị Thùy Lam">Tổ Quản lý, hỗ trợ doanh nghiệp</option>
+
+                </datalist>
+
+                <span id="nguoiNhanPrint" class="nguoi-giao-print"></span>
+                <div class="signature-details">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupSearch" class="popup">
+        <div class="popup-content">
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Nhập mã hoặc tên thủ tục..."
+                oninput="filterTTHC()">
+
+            <div id="searchResult"></div>
+        </div>
+    </div>
+
+    <div id="popupNNT" class="popup">
+
+        <div class="popup-content">
+
+            <input
+                id="searchNNT"
+                placeholder="Nhập MST, CCCD hoặc tên..."
+                oninput="filterNNT()">
+
+            <div id="resultNNT"></div>
+
+        </div>
+
+    </div>
+
+    <div id="popupDate" class="popup">
+        <div class="popup-content" style="width:320px;height:auto;padding:20px">
+            <div class="popup-header">Chọn ngày nộp</div>
+
+            <input id="datePicker" type="text">
+
+            <div style="text-align:right;margin-top:15px">
+                <button onclick="closeDatePopup()">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../xdata/nnt.js"></script>
+    <script src="tthc.js"></script>
+    <script>
+        console.log(thuTucHanhChinh);
+        
+        let currentNNTRow = null;
+        let currentNNTType = null; //   
+        let targetCell = null; // Biến tạm lưu trữ ô đang được chọn file
+
+        // Hàm định dạng ngày giờ: DD-MM-YYYY HH:mm:ss
+        function getFormattedDate() {
+            const now = new Date();
+            const d = String(now.getDate()).padStart(2, '0');
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const y = now.getFullYear();
+            const h = String(now.getHours()).padStart(2, '0');
+            const i = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            return `${d}/${m}/${y}`;
+        }
+
+        // Cập nhật thời gian cho tất cả các dòng hiện có
+        function updateAllRowTimes() {
+            const timeCells = document.querySelectorAll(".col-time");
+            const currentTime = getFormattedDate();
+            timeCells.forEach(cell => {
+                cell.innerText = currentTime;
+            });
+        }
+
+        // Kích hoạt chọn file khi nhấn vào ô Thành phần hồ sơ
+        function triggerFilePicker(cell) {
+            targetCell = cell;
+            document.getElementById('filePicker').click();
+        }
+
+        // Lắng nghe sự kiện chọn file
+        document.getElementById('filePicker').addEventListener('change', function() {
+            if (this.files && this.files[0] && targetCell) {
+                targetCell.innerText = this.files[0].name;
+                this.value = ''; // Reset để có thể chọn lại cùng 1 file nếu cần
+            }
+        });
+
+        function addRow() {
+            const tbody = document.querySelector("#hosoTable tbody");
+            const tr = document.createElement("tr");
+            
+            tr.innerHTML = `
+                <td class="stt"></td>
+                <td contenteditable="true"></td>
+                <td class="tthc-cell">
+                    <div class="cell-wrap">
+                        <span class="cell-text" contenteditable="true"></span>
+                        <span class="search-icon"
+                            onclick="openSearch(this.closest('td'))">
+                            🔍
+                        </span>
+                    </div>
+                </td>
+                <td contenteditable="true" ondblclick="triggerFilePicker(this)">Chọn tệp để lấy tên</td>
+                <td class="date-cell" onclick="pickDate(this)"></td>
+                <td class="mst-cell">
+                    <div class="cell-wrap">
+                        <span class="cell-text" contenteditable="true"></span>
+                    </div>
+                </td>
+                <td class="name-cell">
+                    <div class="cell-wrap">
+                        <span class="cell-text" contenteditable="true"></span>
+                        <span class="search-icon"
+                            onclick="openNNTSearch(this.closest('tr').querySelector('.name-cell'),'name')">
+                            🔍
+                        </span>
+                    </div>
+                </td>
+                <td contenteditable="true">Có</td>
+                <td contenteditable="true">Có</td>
+                <td contenteditable="true" class="col-time">${getFormattedDate()}</td>
+                <td class="btn-remove" style="border: none; background: transparent;"><button onclick="removeRow(this)">X</button></td>
+            `;
+            tbody.appendChild(tr);
+            updateSTT();
+        }
+
+        function removeRow(btn) {
+
+            const tbody = document.querySelector("#hosoTable tbody");
+
+            if (tbody.rows.length <= 1) return;
+
+            btn.closest("tr").remove();
+
+            updateSTT();
+        }
+
+        function updateSTT() {
+            const rows = document.querySelectorAll("#hosoTable tbody tr");
+            rows.forEach((row, index) => {
+                row.querySelector(".stt").innerText = index + 1;
+            });
+        }
+
+        function exportPDF() {
+            const removeBtns = document.querySelectorAll('.btn-remove');
+            removeBtns.forEach(btn => btn.style.display = 'none');
+
+            const element = document.getElementById('printableArea');
+            const opt = {
+                margin: 10,
+                filename: 'Phieu_Chuyen_Ho_So.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 2 }, 
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                removeBtns.forEach(btn => btn.style.display = 'table-cell');
+            });
+        }
+
+        const hiddenDateInput = document.createElement("input");
+        hiddenDateInput.type = "text";
+        document.body.appendChild(hiddenDateInput);
+
+        hiddenDateInput.style.position = "fixed";
+        hiddenDateInput.style.left = "-9999px";
+
+        const fp = flatpickr(hiddenDateInput, {
+            locale: "vn",
+            dateFormat: "d/m/Y",
+            allowInput: false,
+            clickOpens: false,
+
+            onChange(selectedDates, dateStr) {
+                if (window.currentDateCell) {
+                    window.currentDateCell.innerText = dateStr;
+                }
+            }
+        });
+
+        function pickDate(td) {
+            window.currentDateCell = td;
+
+            fp.setDate(td.innerText || null, false, "d/m/Y");
+            fp.open();
+
+            requestAnimationFrame(() => {
+                const cal = document.querySelector(".flatpickr-calendar");
+                if (!cal) return;
+
+                cal.style.position = "fixed";
+                cal.style.left = "50%";
+                cal.style.top = "50%";
+                cal.style.zIndex = "100000";
+            });
+        }
+
+        updateSTT();
+        updateAllRowTimes();
+
+        function openNNTSearch(td, type){
+
+            currentNNTRow = td.closest("tr");
+            currentNNTType = type;
+
+            document.getElementById("popupNNT").style.display = "flex";
+            document.getElementById("searchNNT").value = "";
+
+            filterNNT();
+
+            document.getElementById("searchNNT").focus();
+        }
+
+        function filterTTHC(){
+
+            const key = document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            const result = document.getElementById("searchResult");
+
+            result.innerHTML="";
+
+            thuTucHanhChinh
+                .filter(x=>
+
+                    x.id.toLowerCase().includes(key)
+
+                    ||
+
+                    x.name.toLowerCase().includes(key)
+
+                )
+
+                .forEach(x=>{
+
+                    result.innerHTML+=`
+
+                    <div class="item"
+
+                        onclick="selectTTHC('${x.id}','${x.name.replace(/'/g,"\\'")}')">
+
+                        <div class="item-id">
+
+                            ${x.id}
+
+                        </div>
+
+                        <div class="item-name">
+
+                            ${x.name}
+
+                        </div>
+
+                    </div>
+
+                    `;
+
+                });
+
+        }
+
+        function selectTTHC(id,name){
+
+            currentCell.querySelector(".cell-text").innerText = `${id} - ${name}`;
+
+            currentCell.dataset.id=id;
+
+            document.getElementById("popupSearch").style.display="none";
+
+        }
+
+        let currentCell = null;
+
+        function openSearch(td){
+
+            currentCell = td;
+
+            document.getElementById("popupSearch").style.display="flex";
+
+            document.getElementById("searchInput").value="";
+
+            filterTTHC();
+
+            document.getElementById("searchInput").focus();
+
+        }
+
+        function openNNTSearch(input, type){
+
+            currentNNTRow = input.closest("tr");
+            currentNNTType = type;
+
+            document.getElementById("popupNNT").style.display = "flex";
+
+            document.getElementById("searchNNT").value = "";
+
+            filterNNT();
+
+            document.getElementById("searchNNT").focus();
+
+        }
+
+        function filterNNT(){
+            const key = document
+                .getElementById("searchNNT")
+                .value
+                .toLowerCase();
+
+            const result = document.getElementById("resultNNT");
+
+            result.innerHTML = "";
+
+            nnt
+                .filter(x =>
+
+                    x.mst.includes(key)
+
+                    ||
+
+                    x.cccd.includes(key)
+
+                    ||
+
+                    x.tenNNT.toLowerCase().includes(key)
+
+                )
+                .slice(0,100)
+                .forEach(x=>{
+
+                    result.innerHTML += `
+
+                        <div class="item"
+                            onclick="selectNNT('${x.mst}','${x.tenNNT.replace(/'/g,"\\'")}', '${x.cccd}')">
+
+                            <div class="item-id">
+
+                                ${x.mst}
+
+                            </div>
+
+                            <div>
+
+                                CCCD: ${x.cccd}
+
+                            </div>
+
+                            <div class="item-name">
+
+                                ${x.tenNNT}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                });
+
+        }
+
+        function selectNNT(mst, name, cccd){
+
+            currentNNTRow.querySelector(".mst-cell .cell-text").innerText = cccd + '\n\n(' + mst + ')';
+            currentNNTRow.querySelector(".name-cell .cell-text").innerText = name;
+
+            document.getElementById("popupNNT").style.display = "none";
+        }
+
+        document.querySelectorAll(".popup").forEach(popup => {
+
+            popup.addEventListener("click", function(e){
+
+                // chỉ đóng khi bấm vào nền tối
+                if(e.target === this){
+                    this.style.display = "none";
+                }
+
+            });
+
+        });
+
+        function initField(inputId, spanId, storageKey) {
+            const input = document.getElementById(inputId);
+            const span = document.getElementById(spanId);
+
+            const saved = localStorage.getItem(storageKey);
+            if (saved) input.value = saved;
+
+            span.innerText = input.value;
+
+            input.addEventListener("change", function () {
+                span.innerText = this.value;
+                localStorage.setItem(storageKey, this.value);
+            });
+        }
+
+        initField("nguoiGiao","nguoiGiaoPrint","nguoiGiao");
+        initField("boPhanGiao", "boPhanGiaoPrint", "boPhanGiao");
+        initField("boPhanNhan","boPhanNhanPrint","boPhanNhan");
+        initField("nguoiNhan","nguoiNhanPrint","nguoiNhan");
+    </script>
+</body>
+</html>

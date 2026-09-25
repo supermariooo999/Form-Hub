@@ -1,0 +1,272 @@
+/* Giữ nguyên Style cũ của bạn */
+body { font-family: 'Times New Roman', Times, serif; background: #e9ecef; margin: 0; padding: 20px; }
+.container { max-width: 297mm; margin: 0 auto; background: #fff; padding: 25px 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); box-sizing: border-box; }
+.controls { text-align: center; margin-bottom: 20px; }
+button { padding: 10px 20px; margin: 0 5px; cursor: pointer; border: none; border-radius: 5px; font-size: 15px; font-weight: bold; transition: 0.2s; }
+.btn-add { background-color: #28a745; color: white; }
+.btn-time { background-color: #e0a800; color: white; } /* Nút mới */
+.btn-print { background-color: #17a2b8; color: white; }
+.btn-pdf { background-color: #dc3545; color: white; }
+
+@media print {
+    body { background: transparent; padding: 0; }
+    .container { box-shadow: none; margin: 0; padding: 0; max-width: 100%; }
+    .controls, .btn-remove { display: none !important; }
+}
+
+.header { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 15px;}
+.header-left { text-align: center; }
+.title { text-align: center; font-size: 20px; font-weight: bold; margin: 25px 0; text-transform: uppercase; }
+.info-section { margin-bottom: 20px; line-height: 1.6; font-size: 15px;}
+
+[contenteditable="true"]:hover { background-color: #f8f9fa; outline: 1px dashed #007bff; border-radius: 2px;}
+[contenteditable="true"]:focus { background-color: #e2eef9; outline: 1px solid #007bff; }
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 14px; table-layout: fixed; }
+th, td { border: 1px solid #000; padding: 6px; text-align: center; vertical-align: middle; word-wrap: break-word;}
+th { font-weight: bold; background-color: #f2f2f2; padding: 10px 5px;}
+
+
+
+.footer-note { font-style: italic; margin-bottom: 30px; font-size: 15px;}
+.signatures { display: flex; justify-content: space-between; text-align: center; margin-top: 10px; font-size: 15px;}
+.signature-block { width: 45%; }
+.signature-title { font-weight: bold; margin-bottom: 90px; }
+.signature-name { font-weight: bold; }
+.signature-details { text-align: left; padding-left: 20%; line-height: 1.6;}
+
+.btn-remove { background-color: transparent; border: none; padding: 0; width: 30px; }
+.btn-remove button { background-color: #ff4d4d; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 12px; line-height: 18px; padding: 0; margin: 0; }
+
+.cell-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+}
+
+.cell-text{
+    flex:1;
+    min-height:18px;
+    text-align:left;
+    outline:none;
+}
+
+.search-icon{
+    flex-shrink:0;
+    cursor:pointer;
+    color:#0d6efd;
+    font-size:15px;
+    user-select:none;
+}
+
+.search-icon:hover{
+    transform:scale(1.15);
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(3px);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:fadeIn .15s;
+}
+
+.popup-content{
+    width:850px;
+    max-width:95vw;
+    height:650px;
+    max-height:90vh;
+
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    animation:popup .18s;
+}
+
+.popup-header{
+    padding:15px 20px;
+    background:#0d6efd;
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#searchInput,
+#searchNNT{
+    border:none;
+    outline:none;
+
+    padding:16px 20px;
+
+    font-size:17px;
+
+    border-bottom:1px solid #ddd;
+
+    position:sticky;
+    top:0;
+
+    background:white;
+}
+
+#searchResult,
+#resultNNT{
+    flex:1;
+    overflow:auto;
+    background:#fafafa;
+}
+
+.item{
+    padding:14px 18px;
+
+    border-bottom:1px solid #eee;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.item:hover{
+    background:#eef5ff;
+}
+
+.item-id{
+    font-size:15px;
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+.item-name{
+    font-size:16px;
+    color:#222;
+}
+
+.item small{
+    color:#777;
+}
+
+#resultNNT::-webkit-scrollbar,
+#searchResult::-webkit-scrollbar{
+    width:10px;
+}
+
+#resultNNT::-webkit-scrollbar-thumb,
+#searchResult::-webkit-scrollbar-thumb{
+    background:#bbb;
+    border-radius:20px;
+}
+
+#resultNNT::-webkit-scrollbar-thumb:hover,
+#searchResult::-webkit-scrollbar-thumb:hover{
+    background:#888;
+}
+
+/* Select dùng trong biểu mẫu */
+.nguoi-giao-print{
+    display:none;
+}
+#nguoiGiao, #boPhanGiao,
+#boPhanNhan{
+    margin-bottom: 5px;
+    padding:6px 12px;
+    border:2px solid #0d6efd;
+    border-radius:6px;
+    background:#eef5ff;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    transition:.2s;
+    outline:none;
+}
+#boPhanGiao {
+    border:2px solid #ff34cc;
+    background:#faeeff;
+}
+
+/* Hover */
+#nguoiGiao:hover,
+#boPhanNhan:hover{
+    background:#dbeafe;
+    border-color:#0b5ed7;
+}
+
+/* Khi bấm */
+#nguoiGiao:focus,
+#boPhanNhan:focus{
+    background:#fff;
+    box-shadow:0 0 0 4px rgba(13,110,253,.15);
+}
+
+#nguoiNhan{
+    padding:6px 12px;
+    border:2px solid #0d6efd;
+    border-radius:6px;
+    background:#eef5ff;
+    font-weight:bold;
+    font-size:15px;
+    width:220px;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(-15px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@media print{
+
+    #nguoiGiao{
+        display:none !important;
+    }
+
+    .nguoi-giao-print{
+        display:inline !important;
+        font-weight:bold;
+    }
+
+    #boPhanGiao, #boPhanNhan{
+        display:none !important;
+    }
+
+    #boPhanGiaoPrint, #boPhanNhanPrint{
+        display:inline !important;
+    }
+
+    #nguoiNhan{
+        display:none !important;
+    }
+
+    #nguoiNhanPrint{
+        display:inline !important;
+        font-weight:bold;
+    }
+
+    .search-icon{
+        display:none !important;
+    }
+
+}

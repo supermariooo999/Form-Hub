@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mẫu đề nghị chấm dứt hiệu lực mã số thuế</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="a4-page" contenteditable="true">
+        
+        <div class="document">
+            <!-- =================================================
+                HEADER
+                ================================================= -->
+
+            <table class="header-table">
+
+                <tr>
+
+
+                    <!-- ================================
+                        BÊN TRÁI
+                        ================================ -->
+
+                    <td class="header-left">
+
+
+                        <!-- TÊN NNT -->
+
+                        <div
+                            class="nnt-label"
+                            id="nntCurrent"
+                        >
+                            TÊN NGƯỜI NỘP THUẾ
+                        </div>
+
+
+                        <!-- SỐ VĂN BẢN -->
+
+                        <div
+                            class="document-number"
+                            
+                        >
+
+                            Số:
+
+                            <span class="" id="soVanBan">
+                                &nbsp;.....................
+                            </span>
+
+                        </div>
+
+
+                    </td>
+
+
+
+                    <!-- ================================
+                        BÊN PHẢI
+                        ================================ -->
+
+                    <td class="header-right">
+
+
+                        <!-- QUỐC HIỆU -->
+
+                        <div class="quoc-hieu">
+
+                            CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
+
+                        </div>
+
+
+                        <!-- TIÊU NGỮ -->
+
+                        <div class="doc-lap">
+
+                            Độc lập - Tự do - Hạnh phúc
+
+                        </div>
+
+                        <!-- =================================================
+                        ĐỊA DANH + NGÀY THÁNG
+                        ================================================= -->
+
+                        <div class="date-line">
+
+                            <span>
+                                Hòa Bình, ngày&nbsp;
+                            </span>
+
+                            <span
+                                id="ngayVB"
+                                class="date-value"
+                            >
+                                .....
+                            </span>
+
+                            <span>
+                                &nbsp;tháng&nbsp;
+                            </span>
+
+                            <span
+                                id="thangVB"
+                                class="date-value"
+                            >
+                                .....
+                            </span>
+
+                            <span>
+                                &nbsp;năm&nbsp;
+                            </span>
+
+                            <span
+                                id="namVB"
+                                class="year-value"
+                            >
+                                ..........
+                            </span>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
+            <br>
+            <!-- Tiêu đề văn bản -->
+            <div class="doc-title">
+                VĂN BẢN<br>
+                Đề nghị chấm dứt hiệu lực mã số thuế
+            </div>
+
+            <!-- Kính gửi -->
+            <div class="kinh-gui">
+                Kính gửi: Thuế cơ sở 6 tỉnh Cà Mau
+            </div>
+            <br>
+            <!-- Danh sách thông tin 1..5 -->
+            <div class="info-list">
+                <div class="item">
+                    <span class="label">1.</span>
+                    <span class="content">Tên người nộp thuế: 
+                        <span class="" style="" id="hoTen">
+                            ......................................................................................................
+                        </span>
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="label">2.</span>
+                    <span class="content">Mã số thuế: 
+                        <span class="" style="" id="maSoThue">
+                            ....................................................................................................................
+                        </span>
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="label">3.</span>
+                    <span class="content">Địa chỉ trụ sở: 
+                        <span class="" style="" id="diaChi">
+                            ................................................................................................................
+                        </span>
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="label">4.</span>
+                    <span class="content">Lý do chấm dứt hiệu lực mã số thuế: 
+                        <span style="" id="lyDo">
+                            ............................................................................
+                        </span>
+                    </span>
+                </div>
+                <div class="item">
+                    <span class="label">5.</span>
+                    <span class="content">Hồ sơ đính kèm: 
+                        <span style="">
+                            ............................................................................................................
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Cam kết -->
+            <div class="commitment">
+                Người nộp thuế cam kết về tính chính xác, trung thực và hoàn toàn chịu trách nhiệm trước pháp luật về nội dung của văn bản này./.
+            </div>
+
+            <!-- =================================================
+                CHỮ KÝ
+                ================================================= -->
+
+            <table class="signature-table">
+
+
+                <tr>
+
+                    <td></td>
+
+
+                    <td class="signature-cell">
+
+
+                        <div class="signature-title">
+
+                            NGƯỜI NỘP THUẾ
+
+                        </div>
+
+
+                        <div class="signature-title">
+
+                            hoặc NGƯỜI ĐẠI DIỆN THEO PHÁP LUẬT
+
+                        </div>
+
+
+                        <div class="signature-space"></div>
+
+                        <div class="signature-name" id="sigName"></div>
+
+
+                    </td>
+
+
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <!-- =====================================================
+            SIDEBAR
+            ===================================================== -->
+
+    <div class="side-toolbar no-print">
+
+        <button
+            type="button"
+            class="side-btn btn-nnt"
+            id="btnOpenNNT"
+        >
+
+            <span class="side-icon">
+                👤
+            </span>
+
+            <span>
+                Chọn NNT
+            </span>
+
+        </button>
+
+    </div>
+
+    <!-- =========================================================
+     MODAL CHỌN NNT
+     ========================================================= -->
+
+    <div
+        id="nntModal"
+        class="nnt-modal"
+    >
+
+
+        <div class="nnt-modal-box">
+
+
+            <!-- HEADER -->
+
+            <div class="nnt-modal-header">
+
+
+                <h3 class="nnt-modal-title">
+
+                    Chọn người nộp thuế
+
+                </h3>
+
+
+                <button
+                    type="button"
+                    id="btnCloseNNT"
+                    class="nnt-modal-close"
+                >
+
+                    ×
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="nnt-modal-search">
+
+
+                <div class="nnt-search-input-wrapper">
+
+
+                    <span class="nnt-search-icon">
+
+                        🔎
+
+                    </span>
+
+
+                    <input
+                        type="text"
+                        id="nntSearchInput"
+                        placeholder="Tìm theo tên, mã số thuế hoặc CCCD..."
+                        autocomplete="off"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BODY -->
+
+            <div class="nnt-modal-body">
+
+                <div id="nntResult"></div>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="nnt-modal-footer">
+
+
+                <button
+                    type="button"
+                    id="btnCancelNNT"
+                    class="btn-modal btn-cancel"
+                >
+
+                    Hủy
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btnConfirmNNT"
+                    class="btn-modal btn-confirm"
+                    disabled
+                >
+
+                    Chọn NNT
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="../../xdata/nnt.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
