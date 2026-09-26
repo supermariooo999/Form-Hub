@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biên bản VPHC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="a4-page" contenteditable="true">
+
+        <div class="document">
+            <!-- ================= HEADER ================= -->
+            <table class="header-table">
+                <tr>
+                    <td class="header-left">
+                        <div class="nnt-label">
+                            <span class="cqCapTren">THUẾ TỈNH CÀ MAU</span>
+                            <br>
+                            THUẾ CƠ SỞ 6 TỈNH CÀ MAU
+                        </div>
+                        <div class="document-number">
+                            Số:
+                            <span id="soVanBan">&nbsp;...../BB-VPHC</span>
+                        </div>
+                    </td>
+                    <td class="header-right">
+                        <div class="quoc-hieu">
+                            CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                        </div>
+                        <div class="doc-lap">
+                            Độc lập - Tự do - Hạnh phúc
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+
+            <div class="doc-title">
+                BIÊN BẢN VI PHẠM HÀNH CHÍNH VỀ THUẾ
+            </div>
+
+            <div class="content">
+                <p>
+                    Hôm nay, hồi
+                    <span id="gioBB">.....</span> giờ
+                    <span id="phutBB">.....</span> phút, ngày
+                    <span id="ngayBB">.....</span> tháng
+                    <span id="thangBB">.....</span> năm
+                    <span id="namBB">.....</span>,
+                    tại Tổ Nghiệp vụ, Dự toán, Pháp chế, Thuế cơ sở 6 tỉnh Cà Mau,
+                    địa chỉ số 391, Quốc lộ 1A, ấp thị trấn A, xã Hòa Bình, tỉnh Cà Mau;
+                </p>
+                <p>
+                    Lý do lập biên bản tại Tổ Nghiệp vụ, Dự toán, Pháp chế, Thuế cơ sở 6 tỉnh Cà Mau:
+                    Nộp hồ sơ khai thuế quá thời hạn quy định.
+                </p>
+                <p><strong>Chúng tôi gồm:</strong></p>
+                <p>
+                    1. Bà: Trương Mỹ Thương; Chức vụ: Tổ trưởng Tổ Nghiệp vụ,
+                    Dự toán, Pháp chế, Thuế cơ sở 6 tỉnh Cà Mau;
+                </p>
+                <p>
+                    2. Ông: Trịnh Minh Trí; Chức vụ: Công chức Tổ Nghiệp vụ,
+                    Dự toán, Pháp chế, Thuế cơ sở 6 tỉnh Cà Mau.
+                </p>
+                <p>
+                    <strong>
+                        Tiến hành lập biên bản vi phạm hành chính đối với ông (bà)/tổ chức có tên sau đây:
+                    </strong>
+                </p>
+
+                <!-- ============================================
+                     KHỐI CÁ NHÂN VI PHẠM (ẩn mặc định)
+                     ============================================ -->
+                <div id="caNhanViPham" style="display:none">
+                    <p>
+                        1. Họ và tên cá nhân vi phạm:
+                        <span id="cn_hoTen"
+                              class="fill-field"
+                              data-default="...........................................">...........................................</span>
+                        Giới tính: ...............................
+                    </p>
+                    <p>
+                        Ngày, tháng, năm sinh: ......./......./...........
+                        Quốc tịch: .........................................................
+                    </p>
+                    <p>
+                        Nghề nghiệp:
+                        <span id="cn_ngheNghiep"
+                              class="fill-field"
+                              data-default="......................................................................................................................">......................................................................................................................</span>
+                    </p>
+                    <p>
+                        Nơi ở hiện tại:
+                        <span id="cn_noiO"
+                              class="fill-field"
+                              data-default=".....................................................................................................................">.....................................................................................................................</span>
+                    </p>
+                    <p>
+                        Số định danh cá nhân/CMND/Hộ chiếu:
+                        <span id="cn_cccd"
+                              class="fill-field"
+                              data-default="........................................................................">........................................................................</span>;
+                        ngày cấp: ......./......./...........;
+                        nơi cấp:
+                        .............................................................................................
+                    </p>
+                    <p>
+                        Mã số thuế:
+                        <span id="cn_mst"
+                              class="fill-field"
+                              data-default=".........................................................................................................................">.........................................................................................................................</span>
+                    </p>
+                </div>
+
+                <!-- ============================================
+                     KHỐI TỔ CHỨC VI PHẠM
+                     ============================================ -->
+                <div id="toChucViPham">
+                    <p>
+                        1. Tên tổ chức vi phạm:
+                        <span id="tc_ten"
+                              class="fill-field"
+                              data-default="....................................................................................................">
+                              .....................................................................................................</span>
+                    </p>
+                    <p>
+                        Địa chỉ trụ sở chính:
+                        <span id="tc_diaChi"
+                              class="fill-field"
+                              data-default="..........................................................................................................">
+                              ..........................................................................................................</span>
+                    </p>
+                    <p>
+                        Số GCN đăng ký đầu tư/doanh nghiệp hoặc GP thành lập/đăng ký hoạt động:
+                        <span id="tc_cccd"
+                              class="fill-field"
+                              data-default="...............">................</span>
+                    </p>
+                    <p>
+                        Ngày cấp: ......./......./...........;
+                        nơi cấp: ................................................................................
+                    </p>
+                    <p>
+                        Mã số thuế:
+                        <span id="tc_mst"
+                              class="fill-field"
+                              data-default="........................................................................................................................">........................................................................................................................</span>
+                    </p>
+                    <p>
+                        Người đại diện theo pháp luật:
+                        <span id="tc_nguoiDaiDien" class="fill-field" data-default="...........................................">...........................................</span>
+                        Giới tính: ..............................
+                    </p>
+                    <p>
+                        Chức danh: ..........................................................................................................................
+                    </p>
+                </div>
+
+                <p>
+                    2. Đã có các hành vi vi phạm hành chính:
+                    <span id="hanhViViPham"
+                          class="fill-field"
+                          data-default="........................................................................">......................................................................
+                        ........................................................................................................................................................
+                    ........................................................................................................................................................
+                    ........................................................................................................................................................    
+                    </span>
+                    <div id="hanhViList" class="hanh-vi-list">
+                        <!-- Các hành vi sẽ được render ở đây -->
+                    </div>
+                </p>
+
+                <p>
+                    3. Hình thức xử phạt:
+                    <span id="hinhThucXuPhat"
+                        class="fill-field"
+                        data-default=".........................................................................................................">.........................................................................................................</span>
+                </p>
+
+                <p class="text-left">
+                    4. Ý kiến trình bày của 
+                    <span id="tc_ten4"
+                        class="fill-field"
+                        data-default=".....................................................................................................">.....................................................................................................</span>:
+                    ........................................................................................................................................................
+                    ........................................................................................................................................................
+                    ........................................................................................................................................................
+                </p>
+
+                <p>
+                    5. Chúng tôi đã yêu cầu 
+                    <span id="tc_ten5"
+                        class="fill-field"
+                        data-default="....................................................................................................">....................................................................................................</span>
+                    chấm dứt ngay hành vi vi phạm.
+                </p>
+
+                <p>
+                    6. Quyền và thời hạn giải trình:
+                    <span id="quyenGiaiTrinh"
+                        class="fill-field"
+                        data-default=".........................................................................................">.........................................................................................</span>
+                </p>
+
+                <p>
+                    Biên bản lập xong hồi
+                    <span id="gioXong">.....</span> giờ
+                    <span id="phutXong">.....</span> phút, ngày
+                    <span id="ngayXong">.....</span> tháng
+                    <span id="thangXong">.....</span> năm
+                    <span id="namXong">.....</span>,
+                    gồm 02 tờ, được lập thành 03 bản có nội dung và giá trị như nhau; đã đọc lại cho những người có tên nêu trên cùng nghe, công nhận là đúng và cùng ký tên dưới đây; giao cho ông/bà <span id="tc_nguoiDaiDien7" class="fill-field" data-default=".................................">.................................</span> là người vi phạm/đại diện tổ chức vi phạm 01 bản, 02 bản lưu hồ sơ.
+                </p>
+            </div>
+
+            <!-- =================================================
+                CHỮ KÝ — 2 CỘT, 3 HÀNG
+                ================================================= -->
+            <table class="signature-table">
+                <!-- HÀNG 1 -->
+                <tr>
+                    <td class="signature-cell">
+                        <div class="signature-title">
+                            CÁ NHÂN/NGƯỜI ĐẠI DIỆN<br>CỦA TỔ CHỨC VI PHẠM
+                        </div>
+                        <div class="signature-subtitle">(Ký, ghi rõ họ và tên)</div>
+                        <div class="signature-space"></div>
+                        <div class="signature-name fill-field"
+                            id="sigName"
+                            data-default=""></div>
+                    </td>
+                    <td class="signature-cell">
+                        <div class="signature-title">
+                            NGƯỜI LẬP BIÊN BẢN
+                        </div>
+                        <div class="signature-subtitle">(Ký, ghi rõ chức vụ, họ và tên)</div>
+                        <div class="signature-space"></div>
+                        <div class="signature-name">Trịnh Minh Trí</div>
+                    </td>
+                </tr>
+
+                <!-- HÀNG 2 -->
+                <tr>
+                    <td class="signature-cell">
+                        <div class="signature-title">
+                            CÁ NHÂN/NGƯỜI ĐẠI DIỆN<br>CỦA TỔ CHỨC BỊ THIỆT HẠI
+                        </div>
+                        <div class="signature-subtitle">(Ký, ghi rõ họ và tên)</div>
+                        <div class="signature-space"></div>
+                        <div class="signature-name"></div>
+                    </td>
+                    <td class="signature-cell">
+                        <div class="signature-title">
+                            ĐẠI DIỆN CHÍNH QUYỀN
+                        </div>
+                        <div class="signature-subtitle">(Ký, ghi rõ chức vụ, họ và tên)</div>
+                        <div class="signature-space"></div>
+                        <div class="signature-name"></div>
+                    </td>
+                </tr>
+
+                <!-- HÀNG 3 -->
+                <tr>
+                    <td class="signature-cell">
+                        <div class="signature-title">
+                            NGƯỜI PHIÊN DỊCH
+                        </div>
+                        <div class="signature-subtitle">(Ký, ghi rõ họ và tên)</div>
+                        <div class="signature-space"></div>
+                        <div class="signature-name"></div>
+                    </td>
+                    <td class="signature-cell">
+                        <div class="signature-title">
+                            NGƯỜI CHỨNG KIẾN
+                        </div>
+                        <div class="signature-subtitle">(Ký, ghi rõ họ và tên)</div>
+                        <div class="signature-space"></div>
+                        <div class="signature-name"></div>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+
+    <!-- ================= SIDEBAR ================= -->
+    <div class="side-toolbar no-print">
+        <button type="button" class="side-btn btn-nnt" id="btnOpenNNT">
+            <span class="side-icon">👤</span>
+            <span>Chọn NNT</span>
+        </button>
+        <button type="button" class="side-btn" id="btnOpenHanhVi">
+            <span class="side-icon">📋</span>
+            <span>Nhập hành vi</span>
+        </button>
+    </div>
+
+    <!-- =========================================================
+     MODAL NHẬP HÀNH VI VI PHẠM (ĐA TỜ KHAI)
+     ========================================================= -->
+    <div id="hanhViModal" class="nnt-modal">
+        <div class="nnt-modal-box" style="width:900px">
+
+            <!-- HEADER -->
+            <div class="nnt-modal-header">
+                <h3 class="nnt-modal-title">Nhập hành vi vi phạm</h3>
+                <button type="button" id="btnCloseHanhVi" class="nnt-modal-close">×</button>
+            </div>
+
+            <!-- BODY -->
+            <div class="nnt-modal-body" style="padding:20px">
+
+                <!-- Bảng nhập các tờ khai -->
+                <div class="hv-table-wrapper">
+                    <table class="hv-table">
+                        <thead>
+                            <tr>
+                                <th style="width:40px">#</th>
+                                <th style="width:180px">Mẫu tờ khai</th>
+                                <th style="width:140px">Kỳ tính thuế</th>
+                                <th style="width:160px">Tiếp nhận</th>
+                                <th style="width:130px">Chậm nộp (ngày)</th>
+                                <th style="width:50px"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="hvTableBody">
+                            <!-- Các dòng sẽ được render ở đây -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Nút thêm dòng -->
+                <div class="hv-add-row">
+                    <button type="button" id="btnAddRow" class="btn-add-row">
+                        + Thêm tờ khai
+                    </button>
+                </div>
+
+                <!-- Preview các hành vi sẽ được sinh ra -->
+                <div class="hv-preview">
+                    <div class="hv-preview-title">Xem trước:</div>
+                    <div id="hvPreviewContent" class="hv-preview-content">
+                        (Chưa có tờ khai nào)
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="nnt-modal-footer">
+                <button type="button" id="btnCancelHanhVi" class="btn-modal btn-cancel">Hủy</button>
+                <button type="button" id="btnAddHanhVi" class="btn-modal btn-confirm">Lưu hành vi</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= MODAL ================= -->
+    <div id="nntModal" class="nnt-modal">
+        <div class="nnt-modal-box">
+            <div class="nnt-modal-header">
+                <h3 class="nnt-modal-title">Chọn người nộp thuế</h3>
+                <button type="button" id="btnCloseNNT" class="nnt-modal-close">×</button>
+            </div>
+
+            <div class="nnt-modal-search">
+                <div class="nnt-search-input-wrapper">
+                    <span class="nnt-search-icon">🔎</span>
+                    <input type="text"
+                           id="nntSearchInput"
+                           placeholder="Tìm theo tên, mã số thuế hoặc CCCD..."
+                           autocomplete="off">
+                </div>
+            </div>
+
+            <div class="nnt-modal-body">
+                <div id="nntResult"></div>
+            </div>
+
+            <div class="nnt-modal-footer">
+                <button type="button" id="btnCancelNNT" class="btn-modal btn-cancel">Hủy</button>
+                <button type="button" id="btnConfirmNNT" class="btn-modal btn-confirm" disabled>Chọn NNT</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../xdata/nnt.js"></script>
+    <script src="helper.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

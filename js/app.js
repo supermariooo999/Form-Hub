@@ -1,309 +1,123 @@
 const forms = [
-
     {
-        name: "Mẫu biểu 01",
-
-        description:
-            "Tạo và in mẫu biểu khách hàng.",
-
-        category: "Khách hàng",
-
-        icon: "file-text",
-
-        path: "./Form01/index.html"
-    },
-
-
+        id: 1,
+        code: 'gnt',
+        title: 'Giấy nộp tiền vào NSNN',
+        description: 'Giấy nộp tiền vào ngân sách nhà nước',
+        category: 'NNT',
+        icon: 'badge-dollar-sign',
+        theme: 'color-theme-1'
+    }, 
     {
-        name: "Mẫu biểu 02",
-
-        description:
-            "Lập mẫu biểu theo thông tin khách hàng.",
-
-        category: "Nghiệp vụ",
-
-        icon: "clipboard-list",
-
-        path: "./Form02/index.html"
-    }
-
+        id: 2,
+        code: 'pchs',
+        title: 'Phiếu chuyển hồ sơ',
+        description: 'Phiếu chuyển hồ sơ nội bộ.',
+        category: 'CBT',
+        icon: 'folder-sync',
+        theme: 'color-theme-2'
+    }, 
+    {
+        id: 3,
+        code: 'mau_24_dkt',
+        title: 'Mẫu 24/ĐKT - Đề nghị chấm dứt hiệu lực mã số thuế',
+        description: 'Mẫu 24/ĐKT - Đề nghị chấm dứt hiệu lực mã số thuế',
+        category: 'NNT',
+        icon: 'globe-check',
+        theme: 'color-theme-3'
+    }, 
+    {
+        id: 4,
+        code: 'bb_vphc',
+        title: 'Biên bản vi phạm hành chính',
+        description: 'Biên bản vi phạm hành chính',
+        category: 'CBT',
+        icon: 'whistle',
+        theme: 'color-theme-4'
+    }, 
+    // {
+    //     id: 4,
+    //     title: 'Đánh giá hiệu suất',
+    //     description: 'Đánh giá kết quả làm việc và đề xuất mục tiêu phát triển cá nhân.',
+    //     category: 'Nhân sự',
+    //     icon: 'bar-chart-3',
+    //     theme: 'color-theme-4'
+    // }, 
+    // {
+    //     id: 5,
+    //     title: 'Đề xuất ý tưởng',
+    //     description: 'Gửi ý tưởng sáng tạo, cải tiến quy trình và sản phẩm của công ty.',
+    //     category: 'Sáng tạo',
+    //     icon: 'lightbulb',
+    //     theme: 'color-theme-5'
+    // }, 
+    // {
+    //     id: 6,
+    //     title: 'Khảo sát thị trường',
+    //     description: 'Nghiên cứu xu hướng và nhu cầu của khách hàng mục tiêu.',
+    //     category: 'Nghiên cứu',
+    //     icon: 'trending-up',
+    //     theme: 'color-theme-6'
+    // }
 ];
 
+function renderForms(filter = '') {
+    const list = document.getElementById('formList');
+    const count = document.getElementById('formCount');
 
-const formList =
-    document.getElementById("formList");
+    const filtered = forms.filter(f =>
+        f.title.toLowerCase().includes(filter.toLowerCase()) ||
+        f.category.toLowerCase().includes(filter.toLowerCase())
+    );
 
+    list.innerHTML = filtered.map(f => `
+        <div 
+            class="form-card ${f.theme} cursor-pointer"
+            data-code="${f.code}"
+        >
+            <span class="order-badge">
+                #${String(f.id).padStart(2, '0')}
+            </span>
 
-const formCount =
-    document.getElementById("formCount");
-
-
-const searchInput =
-    document.getElementById("searchInput");
-
-
-
-function renderForms(list) {
-
-    formList.innerHTML = "";
-
-
-    formCount.textContent =
-        `${list.length} biểu mẫu`;
-
-
-    if (list.length === 0) {
-
-        formList.innerHTML = `
-
-            <div
-                class="
-                    col-span-full
-                    border
-                    border-dashed
-                    border-[#d5d5d0]
-                    bg-white
-                    p-10
-                    text-center
-                "
-            >
-
-                <i
-                    data-lucide="file-search"
-                    class="
-                        mx-auto
-                        mb-3
-                        h-6
-                        w-6
-                        text-[#aaa]
-                    "
-                ></i>
-
-
-                <div
-                    class="
-                        text-[13px]
-                        font-medium
-                        text-[#666]
-                    "
-                >
-                    Không tìm thấy biểu mẫu
-                </div>
-
-
-                <div
-                    class="
-                        mt-1
-                        text-[12px]
-                        text-[#999]
-                    "
-                >
-                    Thử lại với từ khóa khác.
-                </div>
-
+            <div class="icon-wrapper">
+                <i data-lucide="${f.icon}" class="h-5 w-5"></i>
             </div>
 
-        `;
+            <div class="form-title">${f.title}</div>
 
+            <p class="form-desc">${f.description}</p>
 
-        lucide.createIcons();
+            <div class="form-meta">
+                <span class="category-tag">${f.category}</span>
 
-        return;
-    }
+                <span style="margin-left:auto; opacity:0.5;">
+                    ✦
+                </span>
 
-
-
-    list.forEach(form => {
-
-        const card =
-            document.createElement("div");
-
-
-        card.className = `
-            form-card
-            group
-            cursor-pointer
-            border
-            border-[#deded9]
-            bg-white
-            px-5
-            py-4
-        `;
-
-
-        card.innerHTML = `
-
-            <div
-                class="
-                    flex
-                    items-center
-                    gap-4
-                "
-            >
-
-
-                <!-- Icon -->
-
-                <div
-                    class="
-                        flex
-                        h-10
-                        w-10
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-md
-                        bg-[#f1f1ee]
-                        text-[#555]
-                    "
-                >
-
-                    <i
-                        data-lucide="${form.icon}"
-                        class="h-[18px] w-[18px]"
-                    ></i>
-
-                </div>
-
-
-
-                <!-- Text -->
-
-                <div class="min-w-0 flex-1">
-
-                    <div
-                        class="
-                            flex
-                            items-center
-                            gap-2
-                        "
-                    >
-
-                        <h2
-                            class="
-                                truncate
-                                text-[14px]
-                                font-medium
-                            "
-                        >
-                            ${form.name}
-                        </h2>
-
-
-                        <span
-                            class="
-                                hidden
-                                rounded
-                                bg-[#f2f2ef]
-                                px-1.5
-                                py-0.5
-                                text-[9px]
-                                text-[#777]
-                                sm:inline
-                            "
-                        >
-                            ${form.category}
-                        </span>
-
-                    </div>
-
-
-                    <p
-                        class="
-                            mt-1
-                            truncate
-                            text-[12px]
-                            text-[#888]
-                        "
-                    >
-                        ${form.description}
-                    </p>
-
-                </div>
-
-
-
-                <!-- Arrow -->
-
-                <i
-                    data-lucide="chevron-right"
-                    class="
-                        open-icon
-                        h-4
-                        w-4
-                        shrink-0
-                        text-[#aaa]
-                    "
-                ></i>
-
-
+                <button class="action-btn" type="button">
+                    Mở
+                    <i data-lucide="arrow-right" class="h-3 w-3"></i>
+                </button>
             </div>
+        </div>
+    `).join('');
 
-        `;
+    count.textContent = `${filtered.length} biểu mẫu`;
 
-
-        card.addEventListener(
-            "click",
-            () => {
-
-                window.location.href =
-                    form.path;
-
-            }
-        );
-
-
-        formList.appendChild(card);
-
+    // Click vào card
+    document.querySelectorAll('.form-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const code = card.dataset.code;
+            window.open(`xforms/${code}/${code}.html`, '_blank');
+        });
     });
 
-
     lucide.createIcons();
-
 }
 
+document.getElementById('searchInput').addEventListener('input', function() {
+    renderForms(this.value);
+});
 
-
-searchInput.addEventListener(
-    "input",
-    event => {
-
-        const keyword =
-            event.target.value
-                .trim()
-                .toLowerCase();
-
-
-        const filtered =
-            forms.filter(form => {
-
-                return (
-
-                    form.name
-                        .toLowerCase()
-                        .includes(keyword)
-
-                    ||
-
-                    form.description
-                        .toLowerCase()
-                        .includes(keyword)
-
-                    ||
-
-                    form.category
-                        .toLowerCase()
-                        .includes(keyword)
-
-                );
-
-            });
-
-
-        renderForms(filtered);
-
-    }
-);
-
-
-renderForms(forms);
+renderForms();
+lucide.createIcons();
